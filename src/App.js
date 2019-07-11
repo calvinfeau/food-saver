@@ -64,26 +64,33 @@ class App extends Component {
               />
             )}
           />
-
-          <Route exact path = '/myfood' render={props =>
-            <MyFoodPage             
-            {...props}
-            user={this.state.user}
-            handleLogOut={this.handleLogOut}
-            />
+          {this.state.user ?
+          <div>
+            <Route exact path = '/myfood' render={props =>
+              <MyFoodPage             
+              {...props}
+              user={this.state.user}
+              handleLogOut={this.handleLogOut}
+              />
+            } />
+  
+            <Route exact path = '/mylist' render={() =>
+              <MylistPage /> 
+            } />
+  
+          <Route exact path = '/create' render={() =>
+            <NewItem />
           } />
-
-          <Route exact path = '/mylist' render={() =>
-            <MylistPage /> 
+  
+          <Route exact path = '/create' render={() =>
+            <EditItem />
           } />
+          </div>
+           :
+          <div>
+             To Continue, please Log In.
+           </div>}
 
-        <Route exact path = '/create' render={() =>
-          <NewItem />
-        } />
-
-        <Route exact path = '/create' render={() =>
-          <EditItem />
-        } />
         </Switch>
       </div>
     );

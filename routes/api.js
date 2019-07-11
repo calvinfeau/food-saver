@@ -7,24 +7,29 @@ var usersController = require('../controllers/users');
 router.post("/signup", usersController.signup);
 router.post("/login", usersController.login);
 
+router.use(require('../config/auth'));
 
 /* --- Protected Routes ---*/
-router.get('/myfood', usersController.myFoodItems);
+router.get('/myfood',checkAuth, usersController.myFoodItems);
 
 // Transfert the item from My list to My food
-router.put('/myfood/', usersController.addAllItems);
-router.put('/myfood/add', usersController.addSelectedItems);
+router.put('/myfood/', checkAuth, usersController.addAllItems);
+router.put('/myfood/add', checkAuth, usersController.addSelectedItems);
 
-router.get('/mylist', usersController.myListItems);
-router.post('/mylist/add', usersController.addToList);
-router.put('/mylist/save', usersController.saveRemainingItems);
-router.put('/mylist/:itemId/add', usersController.addOneQty);
-router.put('/mylist/:itemId/sub', usersController.substractOneQty);
+router.get('/mylist', checkAuth, usersController.myListItems);
+router.post('/mylist/add', checkAuth, usersController.addToList);
+router.put('/mylist/save', checkAuth, usersController.saveRemainingItems);
+router.put('/mylist/:itemId/add', checkAuth, usersController.addOneQty);
+router.put('/mylist/:itemId/sub', checkAuth, usersController.substractOneQty);
 
-router.get('/item/create', usersController.createItem);
-router.delete('/item/delete/:itemId', usersController.deleteItem);
-router.put('/item/:itemId', usersController.updateItem);
+router.get('/item/create', checkAuth, usersController.createItem);
+router.delete('/item/delete/:itemId', checkAuth, usersController.deleteItem);
+router.put('/item/:itemId', checkAuth, usersController.updateItem);
 
 
+function checkAuth(req, res, next) {
+    if (req.user) return next();
+    return res.status(401).json({msg: 'Not Authorized'});
+  }
 
 module.exports = router;

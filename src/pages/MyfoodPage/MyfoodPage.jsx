@@ -16,6 +16,10 @@ class MyFood extends Component {
               logout
             </Link>
             <h1>My Food Page</h1>
+            <Link>
+            Add Item
+            </Link>
+            <h3>Hi {this.state.user.name}</h3>
           </div>
         );
       }

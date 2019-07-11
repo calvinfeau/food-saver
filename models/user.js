@@ -3,28 +3,28 @@ const bcrypt = require('bcrypt');
 
 const SALT_ROUNDS = 6;
 
-// const itemSchema = new mongoose.Schema({
-//   name: {
-//     type: String,
-//     required: true
-//   },
-//   category: {
-//     type: String,
-//     enum: ['Meats & Seafood', 'Fruits & Vegetables', 'Spices & Condiments', 'Dry & Packaged Food'],
-//     default: 'Dry & Packaged Food'
-//   },
-//   storage: {
-//     type: String,
-//     enum: ['Fridge', 'Freezer', 'Pantry'],
-//     default: 'Pantry'
-//   },
-//   qunatity: {
-//     type: Number,
-//     default: 1
-//   }
-// }, {
-//     timestamps: true
-// });
+const itemSchema = new mongoose.Schema({
+  name: {
+    type: String,
+    required: true
+  },
+  category: {
+    type: String,
+    enum: ['Meats & Seafood', 'Fruits & Vegetables', 'Spices & Condiments', 'Dry & Packaged Food'],
+    default: 'Dry & Packaged Food'
+  },
+  storage: {
+    type: String,
+    enum: ['Fridge', 'Freezer', 'Pantry'],
+    default: 'Pantry'
+  },
+  qunatity: {
+    type: Number,
+    default: 1
+  }
+}, {
+    timestamps: true
+});
 
 // const myListSchema = new mongoose.Schema({
 //   items: [itemSchema]
@@ -43,8 +43,8 @@ const userSchema = new mongoose.Schema({
       unique: true
     },
     password: String,
-    // list: myListSchema,
-    // food: myFoodSchema
+    list: [itemSchema],
+    food: [itemSchema]
   }, {
     timestamps: true
 });
