@@ -2,6 +2,13 @@ var express = require('express');
 var router = express.Router();
 var usersController = require('../controllers/users');
 
+
+/*---------- Public Routes ----------*/
+router.post("/signup", usersController.signup);
+router.post("/login", usersController.login);
+
+
+/* --- Protected Routes ---*/
 router.get('/myfood', usersController.myFoodItems);
 
 // Transfert the item from My list to My food
