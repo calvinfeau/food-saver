@@ -5,13 +5,12 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var cors = require('cors');
 
+require('dotenv').config();
 require('./config/database');
 
 var apiRouter = require('./routes/api');
 
 var app = express();
-
-// view engine setup
 
 app.use(cors());
 app.use(logger('dev'));
