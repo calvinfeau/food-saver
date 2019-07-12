@@ -18,14 +18,9 @@ class LoginPage extends Component {
     e.preventDefault();
     try {
       await userService.login(this.state);
-      console.log("login worked");
       this.props.handleSignupOrLogin();
-      console.log("handlelogin worked");
-      // Successfully signed up - show GamePage
       this.props.history.push("/myfood");
-      console.log("hi calvin");
     } catch (err) {
-      // Invalid user data (probably duplicate email)
       alert("Invalid Credentials!");
     }
   };

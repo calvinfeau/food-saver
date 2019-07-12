@@ -23,8 +23,8 @@ app.use(cookieParser());
 // app.use(favicon(path.join(__dirname, 'build', 'favicon.ico')));
 app.use(express.static(path.join(__dirname, 'build')));
 
-app.use(require("./config/auth"));
 app.use('/api', apiRouter);
+app.use(require("./config/auth"));
 
 // The following "catch all" route (note the *)is necessary
 // for a SPA's client-side routing to properly work
@@ -53,7 +53,10 @@ app.use(function(err, req, res, next) {
 
   // render the error page
   res.status(err.status || 500);
-  res.render('error');
+  res.json({
+    message: err.message,
+    error: err
+  });
 });
 
 module.exports = app;

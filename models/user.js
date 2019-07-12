@@ -18,10 +18,7 @@ const itemSchema = new mongoose.Schema({
     enum: ['Fridge', 'Freezer', 'Pantry'],
     default: 'Pantry'
   },
-  qunatity: {
-    type: Number,
-    default: 1
-  }
+  quantity: Number
 }, {
     timestamps: true
 });
@@ -51,7 +48,6 @@ const userSchema = new mongoose.Schema({
 
 userSchema.set("toJSON", {
   transform: function(doc, ret) {
-    // remove the password property when serializing doc to JSON
     delete ret.password;
     return ret;
   }
@@ -60,7 +56,6 @@ userSchema.set("toJSON", {
 userSchema.pre("save", function(next) {
   const user = this;
   if (!user.isModified("password")) return next();
-  // password has been modified, so let's hash it!
   bcrypt.hash(user.password, SALT_ROUNDS, function(err, hash) {
     if (err) return next(err);
     user.password = hash;

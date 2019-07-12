@@ -8,8 +8,8 @@ import SignUpPage from '../src/pages/SignUpPage/SignUpPage';
 import LogInPage from '../src/pages/LogInPage/LogInPage';
 import MyFoodPage from './pages/MyFoodPage/MyFoodPage';
 import MylistPage from './pages/MyListPage/MyListPage';
-import NewItem from './pages/NewItemPage/NewItemPage';
-import EditItem from './pages/EditItemPage/EditItemPage';
+import NewItemPage from './pages/NewItemPage/NewItemPage';
+import EditItemPage from './pages/EditItemPage/EditItemPage';
 
 class App extends Component {
   constructor() {
@@ -21,14 +21,13 @@ class App extends Component {
 
   handleSignupOrLogin = () => {
     this.setState({ user: userService.getUser() });
+    console.log(this.state.user)
   };
 
   handleLogOut = () => {
     console.log("handlelogout called");
     userService.logout();
-    console.log("logged out");
     this.setState({ user: null });
-    console.log(this.state.user);
   };
 
   render() {
@@ -69,7 +68,6 @@ class App extends Component {
             <Route exact path = '/myfood' render={props =>
               <MyFoodPage             
               {...props}
-              user={this.state.user}
               handleLogOut={this.handleLogOut}
               />
             } />
@@ -78,12 +76,12 @@ class App extends Component {
               <MylistPage /> 
             } />
   
-          <Route exact path = '/create' render={() =>
-            <NewItem />
+          <Route exact path = '/item/create' render={() =>
+            <NewItemPage />
           } />
   
-          <Route exact path = '/create' render={() =>
-            <EditItem />
+          <Route exact path = '/item/:itemId' render={() =>
+            <EditItemPage />
           } />
           </div>
            :

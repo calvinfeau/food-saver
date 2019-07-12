@@ -1,5 +1,12 @@
+import tokenService, {getToken} from '../utils/tokenService'
+
+
 export function getMyFoodItems() {
-    return fetch('/api/myfood').then((res) => res.json())
+    return fetch('/api/myfood', {
+        headers: {
+            'Authorization': 'Bearer ' + tokenService.getToken()
+        }
+    }).then((res) => res.json())
 }
 
 export function getMyListItems() {
@@ -7,16 +14,16 @@ export function getMyListItems() {
 }
 
 export function createItem(item) {
+    console.log('api service reached')
+    console.log(item)
     return fetch('/api/item/create', {
         method: 'POST',
-        body: JSON.stringify({
-            name: item.name,
-            category: item.category,
-            storage: item.storage,
-            quantity: item.quantity
-        }),
-        headers: {'content-type': 'application/json'}
-    })
+        headers: {
+        'content-type': 'application/json',
+        'Authorization': "Bearer " + tokenService.getToken()
+        },
+        body: JSON.stringify(item)
+    }).then(res => res.json())
 }
 
 export function editItem(item) {
@@ -28,7 +35,9 @@ export function editItem(item) {
             storage: item.storage,
             quantity: item.quantity
         }),
-        headers: {'content-type': 'application/json'}
+        headers: {
+            'content-type': 'application/json',
+            'Authorization': "Bearer " + tokenService.getToken()}
     })
 }
 

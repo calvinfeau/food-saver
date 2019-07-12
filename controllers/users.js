@@ -15,14 +15,19 @@ module.exports = {
     addAllItems,
     addSelectedItems,
     saveRemainingItems,
-
-
-
     signup,
     login
 };
 
-function myFoodItems() {};
+async function myFoodItems(req, res) {
+    try {
+        await User.findById(req.user._id, function(err, user) {
+            res.status(200).json(user)
+        });
+    } catch(err) {
+        res.json({err})
+    }
+};
 
 function addToList() {};
 
@@ -32,7 +37,19 @@ function addOneQty() {};
 
 function substractOneQty() {};
 
-function createItem() {};
+async function createItem(req, res) {
+    console.log('controller reached')
+    try {
+        await User.findById(req.user._id, function(err, user) {
+            console.log('user found');
+            user.list.push(req.body);
+            user.save((post) => res.status(200).json(post))
+        });
+    } 
+    catch(err) {
+        res.json({err});
+    }
+};
 
 function updateItem() {};
 
@@ -47,10 +64,11 @@ function saveRemainingItems() {};
 
 
 
+
+
 // AUTH FUNCTIONS
 
 async function signup(req, res) {
-    console.log("hit");
     const user = new User(req.body);
     try {
       await user.save();
@@ -80,7 +98,6 @@ async function login(req, res) {
     }
 }
   
-  /* --- Helper Functions ---- */
 function createJWT(user) {
     return jwt.sign({ user }, SECRET, { expiresIn: "24h" });
 }
