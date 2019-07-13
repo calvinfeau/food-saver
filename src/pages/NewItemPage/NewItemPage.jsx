@@ -2,40 +2,55 @@ import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
 import {createItem} from '../../services/api';
 
+let isInFood = true, isInList = true;
 
 class NewItemPage extends Component {
-
-    constructor() {
-        super();
-        this.state = {
-            name:'test',
-            category: 'Dry & Packaged Food',
-            storage: 'Pantry',
-            quantity: 1
-        }
+    
+    state = {
+        name:'',
+        category: 'Dry & Packaged Food',
+        storage: 'Pantry',
+        quantity: 1,
+        inFood: isInFood,
+        inList: isInList
     }
 
     handleSubmit = (e) => {
         e.preventDefault();
-        console.log(this.state)
-        createItem(this.state).then((json) =>
-        console.log('createIten fecthed'))
-        // window.location = '/myfood';
+        createItem(this.state).then(() => {
+            console.log('item created!')
+            console.log('return by the promise: ')
+            // window.location = '/myfood'
+        }
+        )
     }
 
-    handleName = () => {
-
+    handleName = (e) => {
+        this.setState({ name: e.target.value })
     }
-    handleCategory = () => {
-
+    handleCategory = (e) => {
+        this.setState({ category: e.target.value })
     }
-    handleStorage = () => {
-
+    handleStorage = (e) => {
+        this.setState({ storage: e.target.value })
     }
-    handleQuantity = () => {
-
+    handleQuantity = (e) => {
+        this.setState({ quantity: e.target.value })
     }
-
+    
+    handleInFood = (e) => {
+        isInFood = e.target.checked;
+        console.log(isInFood)
+        this.setState({ inFood: isInFood})
+        console.log('inFood: ', this.state.inFood)
+    }
+    
+    handleInList = (e) => {
+        isInList = e.target.checked;
+        console.log(isInList)
+        this.setState({ inList: isInList})
+        console.log('inList: ', this.state.inList)
+    }
 
     render() {
         return(
@@ -43,26 +58,36 @@ class NewItemPage extends Component {
                 <h1>New Item</h1>
                 <hr/>
                 <form onSubmit={this.handleSubmit}>
-                    <label>Name:</label>
-                    <input value={this.state.name} onChange={this.handleName}/>
-                    <label>What kind of food is it ?</label>
+                    <label>Name:
+                        <input type='text' value={this.state.name} onChange={this.handleName}/>
+                    </label>
+                    <label>What kind of food is it ?
                     <select value={this.state.category} onChange={this.handleCategory}>
                         <option value='Meats & Seafood'>Meats & Seafood</option>
                         <option value='Fruits & Vegetables'>Fruits & Vegetables</option>
                         <option value='Spices & Condiments'>Spices & Condiments</option>
                         <option value='Dry & Packaged Food'>Dry & Packaged Food</option>
                     </select>
-                    <label>Where do you keep it ?</label>
+                    </label>
+                    <label>Where do you keep it ?
                     <select value={this.state.storage} onChange={this.handleStorage}>
                         <option value='Fridge'>Fridge</option>
                         <option value='Freezer'>Freezer</option>
                         <option value='Pantry'>Pantry</option>
                     </select>
-                    <label>How many ?</label>
-                    <input type="number" value={this.state.name} onChange={this.handleQuantity}/>
+                    </label>
+                    <label>How many ?
+                    <input type="number" value={this.state.quantity} onChange={this.handleQuantity} />
+                    </label>
+                    <label>My Food
+                        <input type="checkbox" value={this.state.inFood} onChange={this.handleInFood}  />
+                    </label>
+                    <label>My List
+                        <input type="checkbox" value={this.state.inList} onChange={this.handleInList}  />
+                    </label>
                     <input type="submit" value='Add Item!'/>
                 </form>
-                <Link to='/myfood'></Link>
+                <Link to='/myfood'>Cancel</Link>
             </div>
         )
     }

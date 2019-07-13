@@ -10,38 +10,54 @@ export function getMyFoodItems() {
 }
 
 export function getMyListItems() {
-    return fetch('/api/mylist').then((res) => res.json())
+    return fetch('/api/mylist', {
+        headers: {
+            'Authorization': 'Bearer ' + tokenService.getToken()
+        }
+    }).then(res => res.json())
 }
 
 export function createItem(item) {
-    console.log('api service reached')
-    console.log(item)
-    return fetch('/api/item/create', {
+    // console.log('item being created: ', item)
+    return fetch('/api/create', {
         method: 'POST',
-        headers: {
-        'content-type': 'application/json',
-        'Authorization': "Bearer " + tokenService.getToken()
+        headers: {  
+            'content-type': 'application/json',
+            'Authorization': "Bearer " + tokenService.getToken()
         },
         body: JSON.stringify(item)
     }).then(res => res.json())
 }
 
-export function editItem(item) {
-    return fetch(`/api/item/${item.id}`, {
-        method: 'PUT',
-        body: JSON.stringify({
-            name: item.name,
-            category: item.category,
-            storage: item.storage,
-            quantity: item.quantity
-        }),
+export function getItem(itemId) {
+    // console.log('getItem reached, itemId: ', itemId)
+    return fetch(`/api/item/${itemId}`, {
         headers: {
-            'content-type': 'application/json',
-            'Authorization': "Bearer " + tokenService.getToken()}
-    })
+            'Authorization': "Bearer " + tokenService.getToken()
+        }
+    }).then(res => res.json())
+
 }
 
-export function deleteItem(item) {
-    return fetch(`/api/item/delete/${item.id}`, {
-        method: 'DELETE'}).then((res) => res.json())
+export function editItem(item, itemId) {
+    // console.log('item passed into api: ', item)
+    // console.log('item ID passed into api: ', itemId)
+    return fetch(`/api/item/${itemId}/edit`, {
+        method: 'PUT',
+        headers: {  
+            'content-type': 'application/json',
+            'Authorization': "Bearer " + tokenService.getToken()
+        },
+        body: JSON.stringify(item)
+    }).then(res => {
+        console.log('response used in jsx: ', res);
+        return res.json()})
+}
+
+export function deleteItem(itemId) {
+    console.log('item ID passed into api: ', itemId)
+    return fetch(`/api/item/delete/${itemId}`, {
+        method: 'DELETE',
+        headers: {'Authorization': "Bearer " + tokenService.getToken()}
+    }).then(res => res.json())
 }

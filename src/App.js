@@ -7,7 +7,7 @@ import './App.css';
 import SignUpPage from '../src/pages/SignUpPage/SignUpPage';
 import LogInPage from '../src/pages/LogInPage/LogInPage';
 import MyFoodPage from './pages/MyFoodPage/MyFoodPage';
-import MylistPage from './pages/MyListPage/MyListPage';
+import MyListPage from './pages/MyListPage/MyListPage';
 import NewItemPage from './pages/NewItemPage/NewItemPage';
 import EditItemPage from './pages/EditItemPage/EditItemPage';
 
@@ -21,11 +21,9 @@ class App extends Component {
 
   handleSignupOrLogin = () => {
     this.setState({ user: userService.getUser() });
-    console.log(this.state.user)
   };
 
   handleLogOut = () => {
-    console.log("handlelogout called");
     userService.logout();
     this.setState({ user: null });
   };
@@ -72,17 +70,20 @@ class App extends Component {
               />
             } />
   
-            <Route exact path = '/mylist' render={() =>
-              <MylistPage /> 
+            <Route exact path = '/mylist' render={props =>
+              <MyListPage
+              {...props}
+              handleLogOut={this.handleLogOut} 
+              /> 
             } />
   
-          <Route exact path = '/item/create' render={() =>
-            <NewItemPage />
-          } />
-  
-          <Route exact path = '/item/:itemId' render={() =>
-            <EditItemPage />
-          } />
+            <Route exact path = '/create' render={() =>
+              <NewItemPage/>
+            } />
+    
+            <Route exact path = '/item/:itemId/edit' render={(props) =>
+              <EditItemPage {...props}/>
+            } />
           </div>
            :
           <div>

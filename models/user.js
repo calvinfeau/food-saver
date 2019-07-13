@@ -18,18 +18,12 @@ const itemSchema = new mongoose.Schema({
     enum: ['Fridge', 'Freezer', 'Pantry'],
     default: 'Pantry'
   },
-  quantity: Number
+  quantity: Number,
+  inFood: Boolean,
+  inList: Boolean
 }, {
     timestamps: true
 });
-
-// const myListSchema = new mongoose.Schema({
-//   items: [itemSchema]
-// });
-
-// const myFoodSchema = new mongoose.Schema({
-//   items: [itemSchema]
-// });
 
 const userSchema = new mongoose.Schema({
     name: String,

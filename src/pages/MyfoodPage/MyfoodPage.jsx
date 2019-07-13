@@ -8,8 +8,8 @@ class MyFood extends Component {
         super(props);
         this.state = {
           name: '',
-          list: [],
-          food: []
+          food: [],
+          list: []
         };
       }
 
@@ -25,33 +25,70 @@ class MyFood extends Component {
       render() {
         return (
           <div>
-            <Link className="navLink" to="/" onClick={this.props.handleLogOut}>
-              logout
-            </Link>
             <h1>My Food Page</h1>
-            <Link to='/item/create'>
+            <Link to='/create'>
             Add Item
             </Link>
+            <br/>
+            <Link to="/" onClick={this.props.handleLogOut}>
+              logout
+            </Link>
+            <br/>
+            <Link to='/mylist'>
+            My List
+            </Link>
             <h3>Hi {this.state.name}</h3>
-              <table>
-                <thead>
-                  <tr>
-                    <td>Freezer</td>
-                    <td>Fridge</td>
-                    <td>Pantry</td>
-                  </tr>
-                </thead>
-            {this.food ? this.food.map((f, idx) => 
-                <tr>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                </tr>
-              )
-              :
-              <tr>You don't have food items yet.</tr>
-            }
-            </table>
+            <div>
+              <div>
+                <h3>Freezer</h3>
+                {this.state.food ?
+                 this.state.food.map((f, idx) => 
+                    f.storage === 'Freezer' ? 
+                    <div key={idx}>
+                      <div>{f.quantity}</div>
+                      <Link to={`/item/${f._id}/edit`}>
+                      {f.name}
+                      </Link>
+                    </div>
+                    : 
+                    <div></div>)
+                  :
+                  <div></div>
+                }
+              </div>
+              <div>
+                <h3>Fridge</h3>
+                {this.state.food ? this.state.food.map((f, idx) => 
+                    f.storage === 'Fridge' ? 
+                    <div key={idx}>
+                      <div>{f.quantity}</div>
+                      <Link to={`/item/${f._id}/edit`}>
+                      {f.name}
+                      </Link>
+                    </div>
+                    : 
+                    <div></div>)
+                  :
+                  <div></div>
+                }
+              </div>
+              <div>
+                <h3>Pantry</h3>
+                {this.state.food ? this.state.food.map((f, idx) => 
+                    f.storage === 'Pantry' ? 
+                    <div key={idx}>
+                      <div>{f.quantity}</div>
+                      <Link to={`/item/${f._id}/edit`}>
+                      {f.name}
+                      </Link>
+                    </div>
+                    : 
+                    <div></div>)
+                  :
+                  <div></div>
+                }
+              </div>
+            </div>
           </div>
         );
       }

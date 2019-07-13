@@ -9,6 +9,7 @@ function setToken(token) {
   function getToken() {
     let token = localStorage.getItem("token");
     if (token) {
+      console.log('token works')
       // Check if expired, remove if it is
       const payload = JSON.parse(atob(token.split(".")[1]));
       // JWT's exp is expressed in seconds, not milliseconds, so convert
@@ -17,7 +18,6 @@ function setToken(token) {
         token = null;
       }
     }
-    console.log(token)
     return token;
   }
   
