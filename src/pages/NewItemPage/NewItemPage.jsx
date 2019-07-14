@@ -21,8 +21,7 @@ class NewItemPage extends Component {
         console.log(fromPage)
         createItem(this.state).then(() => {
             window.location = `/${fromPage}`;
-        }
-        )
+        })
     }
 
     handleName = (e) => {
@@ -40,14 +39,12 @@ class NewItemPage extends Component {
     
     handleInFood = (e) => {
         isInFood = e.target.checked;
-        console.log(isInFood)
         this.setState({ inFood: isInFood})
         console.log('inFood: ', this.state.inFood)
     }
     
     handleInList = (e) => {
         isInList = e.target.checked;
-        console.log(isInList)
         this.setState({ inList: isInList})
         console.log('inList: ', this.state.inList)
     }
@@ -67,6 +64,8 @@ class NewItemPage extends Component {
                         <option value='Fruits & Vegetables'>Fruits & Vegetables</option>
                         <option value='Spices & Condiments'>Spices & Condiments</option>
                         <option value='Dry & Packaged Food'>Dry & Packaged Food</option>
+                        <option value='Beverages'>Beverages</option>
+                        <option value='Dairy'>Dairy</option>
                     </select>
                     </label>
                     <label>Where do you keep it ?

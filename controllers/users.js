@@ -51,8 +51,8 @@ async function createItem(req, res) {
     try {
         await User.findById(req.user._id).then((user) => {
             // console.log('user found by mongoose:', user)
-            req.body.inFood ? user.food.push(req.body) : -1;
-            req.body.inList ? user.list.push(req.body) : -1;
+            user.food.push(req.body);
+            // req.body.inList ? user.list.push(req.body) : -1;
             return user.save((item) => res.status(200).json(item))
         });
     } 

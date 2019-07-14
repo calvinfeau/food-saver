@@ -10,7 +10,7 @@ const itemSchema = new mongoose.Schema({
   },
   category: {
     type: String,
-    enum: ['Meats & Seafood', 'Fruits & Vegetables', 'Spices & Condiments', 'Dry & Packaged Food'],
+    enum: ['Meats & Seafood', 'Fruits & Vegetables', 'Spices & Condiments', 'Dry & Packaged Food', 'Beverages', 'Dairy'],
     default: 'Dry & Packaged Food'
   },
   storage: {
