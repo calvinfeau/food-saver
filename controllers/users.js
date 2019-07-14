@@ -62,11 +62,16 @@ async function createItem(req, res) {
 async function getItem(req, res) {
     // console.log('getItem ID passed: ', req.params.itemId)
     try {
-        await User.findById(req.user._id).then(user => { 
+        await User.findById(req.user._id).then(user => {
+            console.log('user: ', user)
+            let item;
+            req.params.locatedIn === 'inFood' ? item = user.food.id(req.params.itemId) :
+            req.params.locatedIn === 'inList' ? item = user.list.id(req.params.itemId) : -1;
             // console.log('user found by mongoose: ', user);
             // console.log('what is return: ', user.food.id(req.params.itemId))
-
-            return user.food.id(req.params.itemId)})
+            console.log('item: ', item)
+            return item;
+        })
         .then((item) => {
             console.log('return by status 200.json()', item);
             return res.status(200).json(item)
@@ -78,26 +83,36 @@ async function getItem(req, res) {
 async function updateItem(req, res) {
     try {
         await User.findById(req.user._id).then(user => {
-            // console.log('user found by mongoose: ', user);
-            user.food.id(req.params.itemId).set(req.body); 
-            // console.log('what is save and return: ', user.food.id(req.params.itemId).set(req.body));
+            console.log('item found by mongoose: ', req.params.itemId);
+            console.log('what is given to mongo: ', req.body);
+            console.log('req.body.inFood: ', req.body.inFood);
+            if(req.body.inFood) {console.log('item found: ', user.food.id(req.params.itemId)); user.food.id(req.params.itemId).set(req.body); console.log('if 1')}
+            console.log('req.body.inList: ', req.body.inList);
+            if(req.body.inList) {console.log('item found: ', user.list.id(req.params.itemId)); user.list.id(req.params.itemId).set(req.body); console.log('if 2')}
+            console.log('set passed');
             return user.save(item => res.status(200).json(item))
         })
     }
-    catch(err) {res.json({err})}
+    catch(err) {
+        console.log('err catch')
+        res.json({err})}
 };
 
 async function deleteItem(req, res) {
     try {
         await User.findById(req.user._id).then(user => {
-            console.log('user found by mongoose: ', user);
-            user.food.id(req.params.itemId).remove();
-            return user.save(item => {
-                console.log('res passed to fetch api: ', item);
-                return res.status(200).json(item)})
+            let itemInFood = user.food.id(req.params.itemId);
+            let itemInList= user.list.id(req.params.itemId);
+            itemInFood ? itemInFood.remove() : -1;            
+            itemInList ? itemInList.remove() : -1;            
+            // console.log('remove() passed')
+            return user.save(() => {
+                return res.status(200).json()})
         })
     }
-    catch(err) {res.json({err})}
+    catch(err) {
+        // console.log('err catch')
+        res.json({err})}
 };
 
 function addAllItems() {};
@@ -109,19 +124,15 @@ function saveRemainingItems() {};
 
 
 
-
-
 // AUTH FUNCTIONS
 
 async function signup(req, res) {
     const user = new User(req.body);
     try {
       await user.save();
-      // TODO: Send back a JWT instead of the user
       const token = createJWT(user);
       res.json({ token });
     } catch (err) {
-      // Probably a duplicate email
       res.status(400).json(err);
     }
   }

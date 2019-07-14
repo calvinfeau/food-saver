@@ -77,11 +77,11 @@ class App extends Component {
               /> 
             } />
   
-            <Route exact path = '/create' render={() =>
-              <NewItemPage/>
+            <Route exact path = '/create' render={(props) =>
+              <NewItemPage {...props}/>
             } />
     
-            <Route exact path = '/item/:itemId/edit' render={(props) =>
+            <Route exact path = '/item/:itemId' render={(props) =>
               <EditItemPage {...props}/>
             } />
           </div>

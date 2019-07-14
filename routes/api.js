@@ -21,7 +21,7 @@ router.put('/mylist/:itemId/sub', checkAuth, usersController.substractOneQty);
 
 router.post('/create', checkAuth, usersController.createItem);
 router.delete('/item/delete/:itemId', checkAuth, usersController.deleteItem);
-router.get('/item/:itemId', checkAuth, usersController.getItem);
+router.get('/item/:itemId/:locatedIn', checkAuth, usersController.getItem);
 router.put('/item/:itemId/edit', checkAuth, usersController.updateItem);
 
 

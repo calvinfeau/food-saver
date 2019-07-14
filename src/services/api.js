@@ -29,19 +29,18 @@ export function createItem(item) {
     }).then(res => res.json())
 }
 
-export function getItem(itemId) {
+export function getItem(itemId, locatedIn) {
     // console.log('getItem reached, itemId: ', itemId)
-    return fetch(`/api/item/${itemId}`, {
+    return fetch(`/api/item/${itemId}/${locatedIn}`, {
         headers: {
             'Authorization': "Bearer " + tokenService.getToken()
         }
     }).then(res => res.json())
-
 }
 
 export function editItem(item, itemId) {
-    // console.log('item passed into api: ', item)
-    // console.log('item ID passed into api: ', itemId)
+    console.log('item passed into api: ', item)
+    console.log('item ID passed into api: ', itemId)
     return fetch(`/api/item/${itemId}/edit`, {
         method: 'PUT',
         headers: {  
@@ -51,7 +50,8 @@ export function editItem(item, itemId) {
         body: JSON.stringify(item)
     }).then(res => {
         console.log('response used in jsx: ', res);
-        return res.json()})
+        return res.json()
+    })
 }
 
 export function deleteItem(itemId) {
@@ -59,5 +59,5 @@ export function deleteItem(itemId) {
     return fetch(`/api/item/delete/${itemId}`, {
         method: 'DELETE',
         headers: {'Authorization': "Bearer " + tokenService.getToken()}
-    }).then(res => res.json())
+    })
 }

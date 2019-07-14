@@ -26,11 +26,11 @@ class MyList extends Component {
         return (
           <div>
             <h1>My List Page</h1>
-            <Link to='/item/create'>
+            <Link to={{ pathname: '/create', state:{page: 'mylist'}}}>
             Add Item
             </Link>
             <br/>
-            <Link className="navLink" to="/" onClick={this.props.handleLogOut}>
+            <Link to="/" onClick={this.props.handleLogOut}>
               Logout
             </Link>
             <br/>
@@ -46,7 +46,9 @@ class MyList extends Component {
                     f.storage === 'Freezer' ? 
                     <div key={idx}>
                       <div>{f.quantity}</div>
-                      <div>{f.name}</div>
+                      <Link to={{pathname: `/item/${f._id}`, state:{inList: true, page: 'mylist'}}}>
+                      {f.name}
+                      </Link>
                     </div>
                     : 
                     <div></div>)
@@ -60,7 +62,9 @@ class MyList extends Component {
                     f.storage === 'Fridge' ? 
                     <div key={idx}>
                       <div>{f.quantity}</div>
-                      <div>{f.name}</div>
+                      <Link to={{pathname: `/item/${f._id}`, state:{inList: true, page: 'mylist'}}}>
+                      {f.name}
+                      </Link>
                     </div>
                     : 
                     <div></div>)
@@ -74,7 +78,9 @@ class MyList extends Component {
                     f.storage === 'Pantry' ? 
                     <div key={idx}>
                       <div>{f.quantity}</div>
-                      <div>{f.name}</div>
+                      <Link to={{pathname: `/item/${f._id}`, state:{inList: true, page: 'mylist'}}}>
+                      {f.name}
+                      </Link>
                     </div>
                     : 
                     <div></div>)

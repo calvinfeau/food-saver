@@ -2,6 +2,8 @@ import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
 import { getItem, editItem, deleteItem } from '../../services/api';
 
+let located;
+let fromPage;
 
 class EditItemPage extends Component {
     constructor(props) {
@@ -17,10 +19,14 @@ class EditItemPage extends Component {
     }
 
     componentDidMount() {
-        var itemId = this.props.match.params.itemId;
-        // console.log('componentdidmount itemId: ', itemId)
         var self = this;
-        getItem(itemId).then(function(item) {
+        var itemId = this.props.match.params.itemId;
+        var locatedIn = Object.keys(this.props.location.state)[0];
+        // console.log('locatedIn:', locatedIn)
+        located = locatedIn;
+        fromPage = this.props.location.state.page
+
+        getItem(itemId, located).then(function(item) {
             console.log('item return from promise: ', item)
             self.setState({
                 name: item.name,
@@ -29,16 +35,9 @@ class EditItemPage extends Component {
                 quantity: item.quantity,
                 inFood: item.inFood,
                 inList: item.inList
-            })
-        })
-        console.log('state mounted: ', this.state)
-    }
-
-    handleSubmit = (e) => {
-        e.preventDefault();
-        editItem(this.state, this.props.match.params.itemId).then(json => console.log('return by the promise: ', json)
-            // window.location = '/myfood'
-        )
+            });
+            console.log('state mounted: ', self.state);
+        });
     }
 
     handleName = (e) => {
@@ -55,16 +54,24 @@ class EditItemPage extends Component {
     }
     handleInFood = (e) => {
         this.setState({ inFood: e.target.checked })
-        // console.log('inFood: ', this.state.inFood)
+        console.log('inFood: ', this.state.inFood)
     }
-    
     handleInList = (e) => {
         this.setState({ inList: e.target.checked})
-        // console.log('inList: ', this.state.inList)
+        console.log('inList: ', this.state.inList)
     }
+
+    handleSubmit = (e) => {
+        e.preventDefault();
+        editItem(this.state, this.props.match.params.itemId)
+            .then(json => {console.log('return by the promise: ', json); window.location = `/${fromPage}`}
+        )
+    }
+
     handleDelete = () => {
-        deleteItem(this.props.match.params.itemId).then(() => window.location = '/myfood')
+        deleteItem(this.props.match.params.itemId).then(() => window.location = `/${fromPage}`)
     }
+
     render() {
         return(
             <div>
@@ -93,10 +100,10 @@ class EditItemPage extends Component {
                     <input type="number" value={this.state.quantity} onChange={this.handleQuantity} />
                     </label>
                     <label>My Food
-                        <input type="checkbox" value={this.state.inFood} onChange={this.handleInFood}  />
+                        <input type="checkbox" value={this.state.inFood} onChange={this.handleInFood} checked={this.state.inFood}/>
                     </label>
                     <label>My List
-                        <input type="checkbox" value={this.state.inList} onChange={this.handleInList}  />
+                        <input type="checkbox" value={this.state.inList} onChange={this.handleInList} checked={this.state.inList} />
                     </label>
                     <input type="submit" value='Edit'/>
                 </form>

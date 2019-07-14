@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import { Link } from 'react-router-dom';
 import { getMyFoodItems } from '../../services/api'
+import { stat } from 'fs';
 
 
 class MyFood extends Component {
@@ -26,7 +27,7 @@ class MyFood extends Component {
         return (
           <div>
             <h1>My Food Page</h1>
-            <Link to='/create'>
+            <Link to={{ pathname: '/create', state:{page: 'myfood'}}}>
             Add Item
             </Link>
             <br/>
@@ -46,7 +47,7 @@ class MyFood extends Component {
                     f.storage === 'Freezer' ? 
                     <div key={idx}>
                       <div>{f.quantity}</div>
-                      <Link to={`/item/${f._id}/edit`}>
+                      <Link to={{pathname: `/item/${f._id}`, state:{inFood: true, page: 'myfood'}}}>
                       {f.name}
                       </Link>
                     </div>
@@ -62,7 +63,7 @@ class MyFood extends Component {
                     f.storage === 'Fridge' ? 
                     <div key={idx}>
                       <div>{f.quantity}</div>
-                      <Link to={`/item/${f._id}/edit`}>
+                      <Link to={{pathname: `/item/${f._id}`, state:{inFood: true, page: 'myfood'}}}>
                       {f.name}
                       </Link>
                     </div>
@@ -78,7 +79,7 @@ class MyFood extends Component {
                     f.storage === 'Pantry' ? 
                     <div key={idx}>
                       <div>{f.quantity}</div>
-                      <Link to={`/item/${f._id}/edit`}>
+                      <Link to={{pathname: `/item/${f._id}`, state:{inFood: true, page: 'myfood'}}}>
                       {f.name}
                       </Link>
                     </div>

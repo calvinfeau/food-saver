@@ -17,10 +17,10 @@ class NewItemPage extends Component {
 
     handleSubmit = (e) => {
         e.preventDefault();
+        let fromPage = this.props.location.state.page;
+        console.log(fromPage)
         createItem(this.state).then(() => {
-            console.log('item created!')
-            console.log('return by the promise: ')
-            // window.location = '/myfood'
+            window.location = `/${fromPage}`;
         }
         )
     }
