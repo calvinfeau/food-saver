@@ -30,8 +30,6 @@ async function myFoodItems(req, res) {
     }
 };
 
-function addToList() {};
-
 async function myListItems(req, res) {
     try {
         await User.findById(req.user._id, function(err, user) {
@@ -63,14 +61,14 @@ async function getItem(req, res) {
     // console.log('getItem ID passed: ', req.params.itemId)
     try {
         await User.findById(req.user._id).then(user => {
-            console.log('user: ', user)
-            let item;
-            req.params.locatedIn === 'inFood' ? item = user.food.id(req.params.itemId) :
-            req.params.locatedIn === 'inList' ? item = user.list.id(req.params.itemId) : -1;
+            // console.log('user: ', user)
+            // let item;
+            // req.params.locatedIn === 'inFood' ? item = user.food.id(req.params.itemId) :
+            // req.params.locatedIn === 'inList' ? item = user.list.id(req.params.itemId) : -1;
             // console.log('user found by mongoose: ', user);
             // console.log('what is return: ', user.food.id(req.params.itemId))
-            console.log('item: ', item)
-            return item;
+            // console.log('item: ', item)
+            return user.food.id(req.params.itemId);
         })
         .then((item) => {
             console.log('return by status 200.json()', item);
@@ -80,38 +78,56 @@ async function getItem(req, res) {
     catch(err) {res.json({err})}
 }
 
-async function updateItem(req, res) {
+async function addToList(req, res) {
     try {
         await User.findById(req.user._id).then(user => {
-            console.log('item found by mongoose: ', req.params.itemId);
-            console.log('what is given to mongo: ', req.body);
-            console.log('req.body.inFood: ', req.body.inFood);
-            if(req.body.inFood) {console.log('item found: ', user.food.id(req.params.itemId)); user.food.id(req.params.itemId).set(req.body); console.log('if 1')}
-            console.log('req.body.inList: ', req.body.inList);
-            if(req.body.inList) {console.log('item found: ', user.list.id(req.params.itemId)); user.list.id(req.params.itemId).set(req.body); console.log('if 2')}
-            console.log('set passed');
-            return user.save(item => res.status(200).json(item))
+            console.log('VALUE OF INLIST',user.food.id(req.params.itemId).inList);
+            user.food.id(req.params.itemId).inList = true;
+            user.food.id(req.params.itemId).inListQty = 1;
+            return user.save(item => {
+                console.log('passe into save: ', item)
+                return res.status(200).json(item)})
         })
     }
     catch(err) {
-        console.log('err catch')
+        console.log('err catched in addToList')
+        res.json({err})
+    }
+}
+
+async function updateItem(req, res) {
+    try {
+        await User.findById(req.user._id).then(user => {
+            // console.log('item found by mongoose: ', req.params.itemId);
+            // console.log('what is given to mongo: ', req.body);
+            // console.log('req.body.inFood: ', req.body.inFood);
+            // if(req.body.inFood) {console.log('item found: ', user.food.id(req.params.itemId)); 
+            user.food.id(req.params.itemId).set(req.body); 
+            // console.log('What is set applied on: ', user.food.id(req.params.itemId));
+            // if(req.body.inList) {console.log('item found: ', user.list.id(req.params.itemId)); user.list.id(req.params.itemId).set(req.body); console.log('if 2')}
+            // console.log('set passed');
+            return user.save(item => {
+                // console.log('item return by controller', item)
+                return res.status(200).json(item)
+            })
+        })
+    }
+    catch(err) {
+        // console.log('err catch in update item')
         res.json({err})}
 };
 
 async function deleteItem(req, res) {
     try {
         await User.findById(req.user._id).then(user => {
-            let itemInFood = user.food.id(req.params.itemId);
-            let itemInList= user.list.id(req.params.itemId);
-            itemInFood ? itemInFood.remove() : -1;            
-            itemInList ? itemInList.remove() : -1;            
+            user.food.id(req.params.itemId).remove();    
             // console.log('remove() passed')
             return user.save(() => {
                 return res.status(200).json()})
         })
     }
     catch(err) {
-        // console.log('err catch')
+        // console.log('err catch in deleteitem')
         res.json({err})}
 };
 

@@ -2,8 +2,11 @@ import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
 import { getItem, editItem, deleteItem } from '../../services/api';
 
-let located;
-let fromPage;
+// let located;
+// let fromPage;
+let quantity;
+// let isInFood;
+// let isInList;
 
 class EditItemPage extends Component {
     constructor(props) {
@@ -12,7 +15,7 @@ class EditItemPage extends Component {
             name: '',
             category: '',
             storage: '',
-            quantity: 1,
+            // quantity: 1,
             inFood: null,
             inList: null
         }
@@ -21,22 +24,26 @@ class EditItemPage extends Component {
     componentDidMount() {
         var self = this;
         var itemId = this.props.match.params.itemId;
-        var locatedIn = Object.keys(this.props.location.state)[0];
+        // var locatedIn = Object.keys(this.props.location.state)[0];
         // console.log('locatedIn:', locatedIn)
-        located = locatedIn;
-        fromPage = this.props.location.state.page
+        // located = locatedIn;
 
-        getItem(itemId, located).then(function(item) {
-            console.log('item return from promise: ', item)
+        // isInFood = this.props.location.state.inFood ? true : false;
+        // isInList = this.props.location.state.inList ? true : false;
+        // fromPage = this.props.location.state.page;
+
+        getItem(itemId).then(function(item) {
+            // console.log('item return from promise: ', item)
             self.setState({
                 name: item.name,
                 category: item.category,
                 storage: item.storage,
-                quantity: item.quantity,
+                inFoodQty: item.inFoodQty,
+                inListQty: item.inListQty,
                 inFood: item.inFood,
                 inList: item.inList
             });
-            console.log('state mounted: ', self.state);
+            // console.log('state mounted: ', self.state);
         });
     }
 
@@ -50,26 +57,31 @@ class EditItemPage extends Component {
         this.setState({ storage: e.target.value })
     }
     handleQuantity = (e) => {
-        this.setState({ quantity: e.target.value })
+        return quantity = e.target.value;
     }
+    
     handleInFood = (e) => {
-        this.setState({ inFood: e.target.checked })
-        console.log('inFood: ', this.state.inFood)
+        this.setState({ inFood: e.target.checked, inFoodQty: quantity})
+        // console.log('inFood: ', this.state.inFood)
     }
+    
     handleInList = (e) => {
-        this.setState({ inList: e.target.checked})
-        console.log('inList: ', this.state.inList)
+        this.setState({ inList: e.target.checked, inListQty: quantity})
+        // console.log('inList: ', this.state.inList)
     }
 
     handleSubmit = (e) => {
         e.preventDefault();
         editItem(this.state, this.props.match.params.itemId)
-            .then(json => {console.log('return by the promise: ', json); window.location = `/${fromPage}`}
+            .then(() => {
+                // console.log('return by the promise: ', json);
+                window.location = `/${this.props.location.state.page}`
+            }
         )
     }
 
     handleDelete = () => {
-        deleteItem(this.props.match.params.itemId).then(() => window.location = `/${fromPage}`)
+        deleteItem(this.props.match.params.itemId).then(() => window.location = `/${this.props.location.state.page}`)
     }
 
     render() {
@@ -97,7 +109,11 @@ class EditItemPage extends Component {
                     </select>
                     </label>
                     <label>How many ?
-                    <input type="number" value={this.state.quantity} onChange={this.handleQuantity} />
+                    {this.props.location.state.page === 'myfood' ?
+                    <input type="number" value={this.state.inFoodQty} onChange={this.handleQuantity} />
+                    :
+                    <input type="number" value={this.state.inListQty} onChange={this.handleQuantity} />
+                    }
                     </label>
                     <label>My Food
                         <input type="checkbox" value={this.state.inFood} onChange={this.handleInFood} checked={this.state.inFood}/>
@@ -107,7 +123,7 @@ class EditItemPage extends Component {
                     </label>
                     <input type="submit" value='Edit'/>
                 </form>
-                <Link to='/myfood'>Cancel</Link>
+                <Link to={`/${this.props.location.state.page}`}>Cancel</Link>
                 <a href="#" onClick={this.handleDelete}>Delete</a>
             </div>
         )

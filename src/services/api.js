@@ -29,9 +29,9 @@ export function createItem(item) {
     }).then(res => res.json())
 }
 
-export function getItem(itemId, locatedIn) {
+export function getItem(itemId) {
     // console.log('getItem reached, itemId: ', itemId)
-    return fetch(`/api/item/${itemId}/${locatedIn}`, {
+    return fetch(`/api/item/${itemId}`, {
         headers: {
             'Authorization': "Bearer " + tokenService.getToken()
         }
@@ -59,5 +59,15 @@ export function deleteItem(itemId) {
     return fetch(`/api/item/delete/${itemId}`, {
         method: 'DELETE',
         headers: {'Authorization': "Bearer " + tokenService.getToken()}
+    })
+}
+
+export function addToList(itemId) {
+    return fetch(`/api/mylist/add/${itemId}`, {
+        method: 'PUT',
+        headers: {'Authorization': "Bearer " + tokenService.getToken()}
+    }).then(res => {
+        console.log('response used in jsx: ', res);
+        return res.json()
     })
 }

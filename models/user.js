@@ -18,7 +18,8 @@ const itemSchema = new mongoose.Schema({
     enum: ['Fridge', 'Freezer', 'Pantry'],
     default: 'Pantry'
   },
-  quantity: Number,
+  inFoodQty: Number,
+  inListQty: Number,
   inFood: Boolean,
   inList: Boolean
 }, {
@@ -34,7 +35,6 @@ const userSchema = new mongoose.Schema({
       unique: true
     },
     password: String,
-    list: [itemSchema],
     food: [itemSchema]
   }, {
     timestamps: true

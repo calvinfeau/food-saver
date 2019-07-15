@@ -14,14 +14,14 @@ router.put('/myfood', checkAuth, usersController.addAllItems);
 router.put('/myfood/add', checkAuth, usersController.addSelectedItems);
 
 router.get('/mylist', checkAuth, usersController.myListItems);
-router.post('/mylist/add', checkAuth, usersController.addToList);
+router.put('/mylist/add/:itemId', checkAuth, usersController.addToList);
 router.put('/mylist/save', checkAuth, usersController.saveRemainingItems);
 router.put('/mylist/:itemId/add', checkAuth, usersController.addOneQty);
 router.put('/mylist/:itemId/sub', checkAuth, usersController.substractOneQty);
 
 router.post('/create', checkAuth, usersController.createItem);
 router.delete('/item/delete/:itemId', checkAuth, usersController.deleteItem);
-router.get('/item/:itemId/:locatedIn', checkAuth, usersController.getItem);
+router.get('/item/:itemId', checkAuth, usersController.getItem);
 router.put('/item/:itemId/edit', checkAuth, usersController.updateItem);
 
 
