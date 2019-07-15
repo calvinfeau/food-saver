@@ -8,7 +8,7 @@ class MyFood extends Component {
         super(props);
         this.state = {
           name: '',
-          food: [],
+          food: []
         };
       }
 
@@ -22,14 +22,18 @@ class MyFood extends Component {
         // console.log(this.state)
         }
       )}
-      
+
       handleAddToList = (itemId) => {
+        var self=this;
         console.log('itemId passed: ', itemId)
-        addToList(itemId).then(json => {
-          console.log('what is coming back from promise: ', json)
-        });
+        addToList(itemId).
+        then(() => getMyFoodItems())
+        .then(user => self.setState({
+          name: user.name,
+          food: user.food.filter(f => f.inFood === true)
+        }))
+      };
         
-      }
       
       render() {
         let foodInFreezer = 
@@ -71,17 +75,11 @@ class MyFood extends Component {
         return (
           <div>
             <h1>My Food Page</h1>
-            <Link to={{ pathname: '/create', state:{inFood: true, inList: false, page: 'myfood'}}}>
-            Add Item
-            </Link>
+            <Link to={{ pathname: '/create', state:{inFood: true, inList: false, page: 'myfood'}}}>Add Item</Link>
             <br/>
-            <Link to="/" onClick={this.props.handleLogOut}>
-              Logout
-            </Link>
+            <Link to="/" onClick={this.props.handleLogOut}>Logout</Link>
             <br/>
-            <Link to='/mylist'>
-            My List
-            </Link>
+            <Link to='/mylist'>My List</Link>
             <h3>Hi {this.state.name}</h3>
               {this.state.food.length > 0 ? 
               <div>

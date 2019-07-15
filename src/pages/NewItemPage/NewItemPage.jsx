@@ -14,8 +14,8 @@ class NewItemPage extends Component {
             name:'',
             category: 'Dry & Packaged Food',
             storage: 'Pantry',
-            // inFoodQty: 1,
-            // inListQty: 1,
+            inFoodQty: 1,
+            inListQty: 1,
             inFood: isInFood,
             inList: isInList
         }
@@ -48,18 +48,24 @@ class NewItemPage extends Component {
         this.setState({ storage: e.target.value })
     }
     handleQuantity = (e) => {
-        return quantity = e.target.value;
+        quantity = e.target.value;
+        this.state.inFood ? 
+        this.setState((state) => {return{...state, inFoodQty: e.target.value}}) : this.setState((state) => {return{...state}});
+        this.state.inList ? 
+        this.setState((state) => {return{...state, inListQty: e.target.value}}) : this.setState((state) => {return{...state}});
     }
     
     handleInFood = (e) => {
-        isInFood = e.target.checked;
-        this.setState({ inFood: e.target.checked, inFoodQty: quantity})
+        // isInFood = e.target.checked;
+        let checked = e.target.checked;
+        this.setState((state) => {return{...state, inFood: checked, inFoodQty: quantity}})        
         // console.log('inFood: ', this.state.inFood)
     }
     
     handleInList = (e) => {
-        isInList = e.target.checked;
-        this.setState({ inList: e.target.checked, inListQty: quantity})
+        let checked = e.target.checked;
+        // isInList = e.target.checked;
+        this.setState((state) => {return{...state, inList: checked, inListQty: quantity}})        
         // console.log('inList: ', this.state.inList)
     }
 

@@ -8,7 +8,7 @@ class MyList extends Component {
         super(props);
         this.state = {
           name: '',
-          food: [],
+          food: []
         };
       }
 
@@ -73,7 +73,7 @@ class MyList extends Component {
               </div>
               :
               <div>
-                <Link to={{ pathname: '/create', state:{inList: true, inFood: false, page: 'myfood'}}}>Add Item</Link>
+                <Link to={{ pathname: '/create', state:{inList: true, inFood: false, page: 'mylist'}}}>Add Item</Link>
               </div>
               }
           </div>

@@ -81,7 +81,7 @@ async function getItem(req, res) {
 async function addToList(req, res) {
     try {
         await User.findById(req.user._id).then(user => {
-            console.log('VALUE OF INLIST',user.food.id(req.params.itemId).inList);
+            console.log('VALUE OF INLIST', user.food.id(req.params.itemId).inList);
             user.food.id(req.params.itemId).inList = true;
             user.food.id(req.params.itemId).inListQty = 1;
             return user.save(item => {
