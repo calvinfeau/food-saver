@@ -4,14 +4,14 @@ import userService from "../../utils/userService";
 // import logo from './logo.svg';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
-import RemainingItemsPage from '../RemainingItemsPage/RemainingItemsPage.jsx'
-import LogInPage from '../LogInPage/LogInPage.jsx';
-import MyFoodPage from '../MyFoodPage/MyFoodPage.jsx';
-import MyListPage from '../MyListPage/MyListPage.jsx';
-import NewItemPage from '../NewItemPage/NewItemPage.jsx';
-import EditItemPage from '../EditItemPage/EditItemPage.jsx';
-import ItemsAddedPage from '../ItemsAddedPage/ItemsAddedPage.jsx'
-import SignUpPage from '../SignUpPage/SignUpPage.jsx';
+import RemainingItemsPage from '../../pages/RemainingItemsPage/RemainingItemsPage'
+import LogInPage from '../../pages/LogInPage/LogInPage';
+import MyFoodPage from '../../pages/MyFoodPage/MyFoodPage';
+import MyListPage from '../../pages/MyListPage/MyListPage';
+import NewItemPage from '../../pages/NewItemPage/NewItemPage';
+import EditItemPage from '../../pages/EditItemPage/EditItemPage';
+import ItemsAddedPage from '../../pages/ItemsAddedPage/ItemsAddedPage'
+import SignUpPage from '../../pages/SignUpPage/SignUpPage';
 
 class App extends Component {
   constructor() {
