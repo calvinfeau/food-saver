@@ -4,8 +4,8 @@ import userService from "../../utils/userService";
 // import logo from './logo.svg';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
-import RemainingItemsPage from '../RemainingItemsPage/RemainingItemsPage'
-import LogInPage from 'src/pages/LogInPage/LogInPage.jsx';
+import RemainingItemsPage from 'src/pages/RemainingItemsPage/RemainingItemsPage'
+import LogInPage from 'src/pages/LogInPage/LogInPage';
 import MyFoodPage from 'src/pages/MyFoodPage/MyFoodPage';
 import MyListPage from 'src/pages/MyListPage/MyListPage';
 import NewItemPage from 'src/pages/NewItemPage/NewItemPage';
