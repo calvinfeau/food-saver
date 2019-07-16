@@ -11,7 +11,6 @@ class ItemsAddedPage extends Component {
         return (
         <div>
             <h1>Items Added!</h1>
-
             <Link to = '/mylist'>Back to My List</Link>
             <br/>
             <Link to = '/myfood'>Back to My Food</Link>
