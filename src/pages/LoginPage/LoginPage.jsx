@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import userService from "../../utils/userService";
-import './LoginPage.css'
+import './LogInPage.css'
 
-class LoginPage extends Component {
+class LogInPage extends Component {
   state = {
     email: "",
     pw: ""
@@ -66,4 +66,4 @@ class LoginPage extends Component {
   }
 }
 
-export default LoginPage;
+export default LogInPage;
