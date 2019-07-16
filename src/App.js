@@ -5,8 +5,8 @@ import logo from './logo.svg';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 import RemainingItemsPage from './pages/RemainingItemsPage/RemainingItemsPage'
-import SignUpPage from '../src/pages/SignUpPage/SignUpPage';
-import LogInPage from '../src/pages/LogInPage/LogInPage';
+import SignUpPage from './pages/SignUpPage/SignUpPage';
+import LogInPage from './pages/LogInPage/LogInPage';
 import MyFoodPage from './pages/MyFoodPage/MyFoodPage';
 import MyListPage from './pages/MyListPage/MyListPage';
 import NewItemPage from './pages/NewItemPage/NewItemPage';
