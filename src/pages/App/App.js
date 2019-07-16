@@ -6,12 +6,12 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 import RemainingItemsPage from '../RemainingItemsPage/RemainingItemsPage'
 import LogInPage from 'src/pages/LogInPage/LogInPage.jsx';
-import MyFoodPage from '../MyFoodPage/MyFoodPage';
-import MyListPage from '../MyListPage/MyListPage';
-import NewItemPage from '../NewItemPage/NewItemPage';
-import EditItemPage from '../EditItemPage/EditItemPage';
-import ItemsAddedPage from '../ItemsAddedPage/ItemsAddedPage'
-import SignUpPage from '../SignUpPage/SignUpPage';
+import MyFoodPage from 'src/pages/MyFoodPage/MyFoodPage';
+import MyListPage from 'src/pages/MyListPage/MyListPage';
+import NewItemPage from 'src/pages/NewItemPage/NewItemPage';
+import EditItemPage from 'src/pages/EditItemPage/EditItemPage';
+import ItemsAddedPage from 'src/pages/ItemsAddedPage/ItemsAddedPage'
+import SignUpPage from 'src/pages/SignUpPage/SignUpPage';
 
 class App extends Component {
   constructor() {
