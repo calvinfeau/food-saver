@@ -43,70 +43,60 @@ class SignUpForm extends Component {
 
   render() {
     return (
-      <div className='container'>
-        <header className="header-footer">Sign Up</header>
-        <form className="form-horizontal" onSubmit={this.handleSubmit}>
+      <div className="row row-lg align-items-center">
+        <div className="col" />
+        <form className="col-5" onSubmit={this.handleSubmit}>
           <div className="form-group">
-            <div className="col-sm-12">
               <input
                 type="text"
-                className="form-control"
+                className="form-control form-control-lg"
                 placeholder="Name"
                 value={this.state.name}
                 name="name"
                 onChange={this.handleChange}
               />
-            </div>
           </div>
           <div className="form-group">
-            <div className="col-sm-12">
               <input
                 type="email"
-                className="form-control"
+                className="form-control form-control-lg"
                 placeholder="Email"
                 value={this.state.email}
                 name="email"
                 onChange={this.handleChange}
               />
-            </div>
           </div>
           <div className="form-group">
-            <div className="col-sm-12">
               <input
                 type="password"
-                className="form-control"
+                className="form-control form-control-lg"
                 placeholder="Password"
                 value={this.state.password}
                 name="password"
                 onChange={this.handleChange}
               />
-            </div>
           </div>
           <div className="form-group">
-            <div className="col-sm-12">
               <input
                 type="password"
-                className="form-control"
+                className="form-control form-control-lg"
                 placeholder="Confirm Password"
                 value={this.state.passwordConf}
                 name="passwordConf"
                 onChange={this.handleChange}
               />
-            </div>
           </div>
-          <div className="form-group">
-            <div className="col-sm-12 text-center">
+            <div className="buttons">
               <button
-                className="btn btn-default"
+                className="btn btn-success"
                 disabled={this.isFormInvalid()}
               >
                 Sign Up
               </button>
-              &nbsp;&nbsp;
-              <Link to="/">Cancel</Link>
-            </div>
+              <Link className="btn btn-outline-dark" to="/">Cancel</Link>
           </div>
         </form>
+        <div className="col" />
       </div>
     );
   }

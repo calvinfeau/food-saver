@@ -73,13 +73,13 @@ class MyFood extends Component {
               )
 
         return (
-          <div>
-            <h1>My Food Page</h1>
-            <Link to={{ pathname: '/create', state:{inFood: true, inList: false, page: 'myfood'}}}>Add Item</Link>
-            <br/>
-            <Link to="/" onClick={this.props.handleLogOut}>Logout</Link>
-            <br/>
-            <Link to='/mylist'>My List</Link>
+          <div className='container-fluid'>
+            <div className='row row-sm align-items-center header'>
+              <span className='col intro'>My Food Page</span>
+              <Link className='col-2 align-right' to={{ pathname: '/create', state:{inFood: true, inList: false, page: 'myfood'}}}>Add Item</Link>
+              <Link className='col-2 align-right' to='/mylist'>My List</Link>
+              <Link className='col-1 align-right' to="/" onClick={this.props.handleLogOut}>Logout</Link>
+            </div>
             <h3>Hi {this.state.name}</h3>
               {this.state.food.length > 0 ? 
               <div>

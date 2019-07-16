@@ -14,8 +14,10 @@ class SignUpPage extends Component {
   
     render() {
       return (
-        <div className="SignUpPage">
-          <h1>Sign Up Page</h1>
+        <div className='container-fluid'>
+          <div className='row row-sm align-items-end'>
+            <div className='col-12 title'>FOOD SAVER</div>
+          </div>
           <SignUpForm {...this.props} />
         </div>
       );

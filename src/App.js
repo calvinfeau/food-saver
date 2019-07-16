@@ -32,52 +32,58 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App container-fluid">
+      <div className="container-fluid">
 
-        <div className='row align-items-center'>
-          <div className='col-12 title'>FOOD SAVER</div>
-        </div>
-        <Route exact path="/"
-        render={() => (
-          <div className='row align-items-center'>
-            <div className='col-5 login'><Link className="btn btn-success btn-lg" to='/login'>Log In</Link></div>
-            <div className='col-2' />
-            <div className='col-5'><Link className='btn btn-outline-success btn-lg' to='/signup'>Sign Up</Link></div>
-            
-            
-          </div>
-        )}
-        
+        <Route 
+          exact path="/"
+          render={() => (
+            <div className='container-fluid'>
+              <div className='row row-sm align-items-end'>
+                <div className='col-12 title'>FOOD SAVER</div>
+              </div>
+              <div className='row row-lg align-items-center'>
+                <div className='col login'><Link className="btn btn-success btn-lg" to='/login'>Log In</Link></div>
+                <div className='col-1' />
+                <div className='col'><Link className='btn btn-outline-success btn-lg' to='/signup'>Sign Up</Link></div>
+              </div>
+              <div className='row row-sm align-items-start'>
+                <div className='col-12 intro'>
+                  Welcome to the Food Saver App! <br/> To continue please login.
+                </div>
+              </div>
+            </div>
+          )}
         />
         <Switch>
         <Route
-            exact
-            path="/signup"
-            render={props => (
+          exact path="/signup"
+          render={props => (
               <SignUpPage
                 {...props}
                 handleSignupOrLogin={this.handleSignupOrLogin}
               />
-            )}
+          )}
           />
           <Route
-            exact
-            path="/login"
+            exact path="/login"
             render={props => (
-              <LogInPage
-                {...props}
-                handleSignupOrLogin={this.handleSignupOrLogin}
-              />
+                <LogInPage
+                  {...props}
+                  handleSignupOrLogin={this.handleSignupOrLogin}
+                />
             )}
           />
           {this.state.user ?
           <div>
-            <Route exact path = '/myfood' render={props =>
-              <MyFoodPage             
-              {...props}
-              handleLogOut={this.handleLogOut}
-              />
-            } />
+            <Route 
+              exact path='/myfood'
+              render={props => (
+                <MyFoodPage             
+                {...props}
+                handleLogOut={this.handleLogOut}
+                />
+              )}
+            />
   
             <Route exact path = '/mylist' render={props =>
               <MyListPage
@@ -102,10 +108,8 @@ class App extends Component {
               <RemainingItemsPage />
             } />
           </div>
-           :
-          <div className='col-12 intro'>
-             Welcome to the Food Saver App! <br/> To continue please login.
-           </div>}
+           : <div></div>
+}
 
         </Switch>
       </div>
