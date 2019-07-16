@@ -5,13 +5,14 @@ import logo from './logo.svg';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 import RemainingItemsPage from './pages/RemainingItemsPage/RemainingItemsPage'
-import SignUpPage from './pages/SignUpPage/SignUpPage';
-import LogInPage from './pages/LogInPage/LogInPage';
-import MyFoodPage from './pages/MyFoodPage/MyFoodPage';
-import MyListPage from './pages/MyListPage/MyListPage';
-import NewItemPage from './pages/NewItemPage/NewItemPage';
-import EditItemPage from './pages/EditItemPage/EditItemPage';
-import ItemsAddedPage from './pages/ItemsAddedPage/ItemsAddedPage'
+// import SignUpPage from './pages/SignUpPage/SignUpPage';
+import SignUpPage from 'src/pages/SignUpPage/SignUpPage';
+import LogInPage from 'src/pages/LogInPage/LogInPage';
+import MyFoodPage from 'src/pages/MyFoodPage/MyFoodPage';
+import MyListPage from 'src/pages/MyListPage/MyListPage';
+import NewItemPage from 'src/pages/NewItemPage/NewItemPage';
+import EditItemPage from 'src/pages/EditItemPage/EditItemPage';
+import ItemsAddedPage from 'src/pages/ItemsAddedPage/ItemsAddedPage'
 
 class App extends Component {
   constructor() {
