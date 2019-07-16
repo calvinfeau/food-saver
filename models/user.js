@@ -18,10 +18,20 @@ const itemSchema = new mongoose.Schema({
     enum: ['Fridge', 'Freezer', 'Pantry'],
     default: 'Pantry'
   },
-  inFoodQty: Number,
-  inListQty: Number,
+  inFoodQty: {
+    type: Number,
+    default: 0
+  },
+  inListQty: {
+    type: Number,
+    default: 0
+  },
   inFood: Boolean,
-  inList: Boolean
+  inList: Boolean,
+  selected: {
+    type: Boolean,
+    default: false
+  }
 }, {
     timestamps: true
 });

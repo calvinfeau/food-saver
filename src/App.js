@@ -10,6 +10,8 @@ import MyFoodPage from './pages/MyFoodPage/MyFoodPage';
 import MyListPage from './pages/MyListPage/MyListPage';
 import NewItemPage from './pages/NewItemPage/NewItemPage';
 import EditItemPage from './pages/EditItemPage/EditItemPage';
+import ItemsAddedPage from './pages/ItemsAddedPage/ItemsAddedPage'
+import RemainingItemsPage from './pages/RemainingItemsPage/RemainingItemsPage'
 
 class App extends Component {
   constructor() {
@@ -83,6 +85,14 @@ class App extends Component {
     
             <Route exact path = '/item/:itemId' render={(props) =>
               <EditItemPage {...props}/>
+            } />
+
+            <Route exact path = '/mylist/added' render={() => 
+              <ItemsAddedPage />
+            } />
+
+            <Route exact path = '/mylist/remaining' render={() => 
+              <RemainingItemsPage />
             } />
           </div>
            :

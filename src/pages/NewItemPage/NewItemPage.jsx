@@ -14,10 +14,11 @@ class NewItemPage extends Component {
             name:'',
             category: 'Dry & Packaged Food',
             storage: 'Pantry',
-            inFoodQty: 1,
-            inListQty: 1,
+            // inFoodQty: 1,
+            // inListQty: 1,
             inFood: isInFood,
             inList: isInList
+            // selected: false
         }
     }
 
@@ -50,9 +51,9 @@ class NewItemPage extends Component {
     handleQuantity = (e) => {
         quantity = e.target.value;
         this.state.inFood ? 
-        this.setState((state) => {return{...state, inFoodQty: e.target.value}}) : this.setState((state) => {return{...state}});
+        this.setState((state) => {return{...state, inFoodQty: quantity}}) : this.setState((state) => {return{...state}});
         this.state.inList ? 
-        this.setState((state) => {return{...state, inListQty: e.target.value}}) : this.setState((state) => {return{...state}});
+        this.setState((state) => {return{...state, inListQty: quantity}}) : this.setState((state) => {return{...state}});
     }
     
     handleInFood = (e) => {

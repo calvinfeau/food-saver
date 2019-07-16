@@ -7,13 +7,14 @@ module.exports = {
     myFoodItems,
     addToList,
     myListItems,
-    addOneQty,
-    substractOneQty,
+    addOne,
+    subOne,
     getItem,
     createItem,
     updateItem,
     deleteItem,
     addAllItems,
+    editSelectedItem,
     addSelectedItems,
     saveRemainingItems,
     signup,
@@ -40,9 +41,21 @@ async function myListItems(req, res) {
     }
 };
 
-function addOneQty() {};
-
-function substractOneQty() {};
+async function subOne(req, res) {
+    try {
+        await User.findById(req.user._id)
+        .then(user => {
+            user.food.id(req.params.itemId).inListQty--;
+            return user.save(item => {
+                console.log('passe into save: ', item)
+                return res.status(200).json(item)})
+        })
+    } 
+    catch(err) {
+        console.log('err catched in addOne')
+        res.json({err})
+    }
+};
 
 async function createItem(req, res) {
     // console.log('current user: ', req.user._id)
@@ -54,7 +67,10 @@ async function createItem(req, res) {
             return user.save((item) => res.status(200).json(item))
         });
     } 
-    catch(err) {res.json({err});}
+    catch(err) {
+        console.log('err catched in createItem')
+        res.json({err})
+    }
 };
 
 async function getItem(req, res) {
@@ -71,29 +87,16 @@ async function getItem(req, res) {
             return user.food.id(req.params.itemId);
         })
         .then((item) => {
-            console.log('return by status 200.json()', item);
+            // console.log('return by status 200.json()', item);
             return res.status(200).json(item)
         })
     }
-    catch(err) {res.json({err})}
-}
-
-async function addToList(req, res) {
-    try {
-        await User.findById(req.user._id).then(user => {
-            console.log('VALUE OF INLIST', user.food.id(req.params.itemId).inList);
-            user.food.id(req.params.itemId).inList = true;
-            user.food.id(req.params.itemId).inListQty = 1;
-            return user.save(item => {
-                console.log('passe into save: ', item)
-                return res.status(200).json(item)})
-        })
-    }
     catch(err) {
-        console.log('err catched in addToList')
+        console.log('err catched in getItem')
         res.json({err})
     }
 }
+
 
 async function updateItem(req, res) {
     try {
@@ -127,15 +130,116 @@ async function deleteItem(req, res) {
         })
     }
     catch(err) {
-        // console.log('err catch in deleteitem')
+        console.log('err catch in deleteitem')
         res.json({err})}
 };
 
-function addAllItems() {};
+async function addAllItems(req, res) {
+    try {
+        await User.findById(req.user._id).then(user => {
+            user.food.forEach(f => {
+                f.inList = false;
+                f.inFood = true;
+                f.inFoodQty += f.inListQty;
+                f.inListQty = 0;
+            })
+            return user.save(() => res.status(200).json())
+        })
+    }
+    catch(err) {
+        console.log('err catch in deleteitem')
+        res.json({err})}
+};
 
-function addSelectedItems() {};
+async function addToList(req, res) {
+    try {
+        await User.findById(req.user._id).then(user => {
+            // console.log('VALUE OF INLIST', user.food.id(req.params.itemId).inList);
+            user.food.id(req.params.itemId).inList = true;
+            user.food.id(req.params.itemId).inListQty = 1;
+            return user.save(item => {
+                // console.log('passe into save: ', item)
+                return res.status(200).json(item)})
+        })
+    }
+    catch(err) {
+        console.log('err catched in addToList')
+        res.json({err})
+    }
+}
 
-function saveRemainingItems() {};
+async function addOne(req, res) {
+    try {
+        await User.findById(req.user._id)
+        .then(user => {
+            user.food.id(req.params.itemId).inListQty++;
+            return user.save(item => {
+                console.log('passed into save on addOne: ', item)
+                return res.status(200).json(item)
+            })
+        })
+    } 
+    catch(err) {
+        console.log('err catched in addOne')
+        res.json({err})
+    }
+};
+
+async function editSelectedItem(req, res) {
+    try {
+        await User.findById(req.user._id).then(user => {
+            user.food.id(req.params.itemId).selected = !user.food.id(req.params.itemId).selected;
+            return user.save(item => {
+                console.log('passed into save on editSelectedItem: ', item)
+                return res.status(200).json(item)
+            })
+        })
+    }
+    catch(err) {
+        console.log('err catched in addToList')
+        res.json({err})
+    }
+};
+
+async function addSelectedItems(req, res) {
+    try {
+        await User.findById(req.user._id).then(user => {
+            user.food.forEach(item => {
+                item.selected ? 
+                (item.selected = false,
+                item.inList = false,
+                item.inFood = true,
+                item.inFoodQty += item.inListQty,
+                item.inListQty = 0)
+                : -1;
+            })
+            return user.save(item => {
+                console.log('passed into save on addOne: ', item)
+                return res.status(200).json(item)
+            })
+        })
+    }
+    catch(err) {
+        console.log('err catched in addSelectedItems')
+        res.json({err})
+    }
+};
+
+async function saveRemainingItems(req, res) {
+    try {
+        await User.findById(req.user._id).then(user => {
+            req.params.choice === 'no' ? user.food.forEach(f => f.inList === true ? user.food.id(f._id).remove() : -1) : -1;
+            return user.save(item => {
+                console.log('passed into save on addOne: ', item)
+                return res.status(200).json(item)
+            })
+        })
+    }
+    catch(err) {
+        console.log('err catched in saveRemainingItems')
+        res.json({err})
+    }
+};
 
 
 

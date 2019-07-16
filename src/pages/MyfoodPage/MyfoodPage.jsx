@@ -26,8 +26,8 @@ class MyFood extends Component {
       handleAddToList = (itemId) => {
         var self=this;
         console.log('itemId passed: ', itemId)
-        addToList(itemId).
-        then(() => getMyFoodItems())
+        addToList(itemId)
+        .then(() => getMyFoodItems())
         .then(user => self.setState({
           name: user.name,
           food: user.food.filter(f => f.inFood === true)

@@ -9,15 +9,16 @@ router.post("/login", usersController.login);
 
 router.use(require('../config/auth'));
 
-router.get('/myfood',checkAuth, usersController.myFoodItems);
+router.get('/myfood', checkAuth, usersController.myFoodItems);
 router.put('/myfood', checkAuth, usersController.addAllItems);
 router.put('/myfood/add', checkAuth, usersController.addSelectedItems);
 
 router.get('/mylist', checkAuth, usersController.myListItems);
 router.put('/mylist/add/:itemId', checkAuth, usersController.addToList);
-router.put('/mylist/save', checkAuth, usersController.saveRemainingItems);
-router.put('/mylist/:itemId/add', checkAuth, usersController.addOneQty);
-router.put('/mylist/:itemId/sub', checkAuth, usersController.substractOneQty);
+router.put('/mylist/save/:choice', checkAuth, usersController.saveRemainingItems);
+router.put('/mylist/:itemId/edit', checkAuth, usersController.editSelectedItem)
+router.put('/mylist/:itemId/add', checkAuth, usersController.addOne);
+router.put('/mylist/:itemId/sub', checkAuth, usersController.subOne);
 
 router.post('/create', checkAuth, usersController.createItem);
 router.delete('/item/delete/:itemId', checkAuth, usersController.deleteItem);
