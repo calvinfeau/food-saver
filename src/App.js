@@ -38,7 +38,7 @@ class App extends Component {
           exact path="/"
           render={() => (
             <div className='container-fluid'>
-              <div className='row row-sm align-items-end'>
+              <div className='row row-md align-items-end'>
                 <div className='col-12 txt-lg main-color'>FOOD SAVER</div>
               </div>
               <div className='row row-lg align-items-center'>
@@ -46,7 +46,7 @@ class App extends Component {
                 <div className='col-1' />
                 <div className='col'><Link className='btn btn-success btn-lg' to='/signup'>Sign Up</Link></div>
               </div>
-              <div className='row row-sm align-items-start'>
+              <div className='row row-md align-items-start'>
                 <div className='col-12 text-md main-color'>
                   Welcome to the Food Saver App! <br/><span className='txt-sm second-color'>To continue please login.</span> 
                 </div>

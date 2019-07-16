@@ -63,13 +63,12 @@ class MyFood extends Component {
         let foodInPantry = 
             this.state.food.map((f, idx) => 
                 f.storage === 'Pantry' ? 
-                <div key={idx}>
-                  
-                  <div className={`d-flex bd-highlight ${idx%2 ? 'bckg-color' : ''}`} > 
-                    <div className='p-2 flex-grow-1 bd-highlight right-txt'>{f.inFoodQty}</div>
-                    <Link className='p-2 flex-grow-1 bd-highlight' to={{pathname: `/item/${f._id}`, state:{page: 'myfood'}}}>{f.name}</Link>
+                <div key={idx} className={`d-flex flex-column row-lg ${idx%2 ? 'bckg-color' : ''}`}>
+                  <div className='d-flex' > 
+                    <div className='p-1 flex-grow-1 bd-highlight right-txt'>{f.inFoodQty}</div>
+                    <Link className='p-1 flex-grow-1' to={{pathname: `/item/${f._id}`, state:{page: 'myfood'}}}>{f.name}</Link>
                   </div>
-                  {!f.inList ? <a href="#" style={{'fontSize':8+'px'}} onClick={() => this.handleAddToList(f._id)}>Add to list</a> : <div></div>}
+                    {!f.inList ? <a className='p-1 d-flex' href="#" style={{'fontSize':10+'px'}} onClick={() => this.handleAddToList(f._id)}>Add to list</a> : <div></div>}
                 </div>
                 : 
                 <div></div>
@@ -77,7 +76,7 @@ class MyFood extends Component {
 
         return (
           <div className='container-fluid'>
-            <div className='row row-sm d-flex bd-highlight align-items-center header'>
+            <div className='row-md d-flex bd-highlight align-items-center header'>
               <span className='p-2 flex-grow-1 bd-highlight txt-lg light-txt'>My Food Page</span>
               <Link className='p-2 bd-highlight btn btn-success margin-sides' to={{ pathname: '/create', state:{inFood: true, inList: false, page: 'myfood'}}}>Add Item</Link>
               <Link className='p-2 bd-highlight btn btn-success margin-sides' to='/mylist'>My List</Link>
@@ -87,8 +86,8 @@ class MyFood extends Component {
             {this.state.food.length > 0 ? 
             <div className="d-flex bd-highlight">
               <div className="p-2 flex-grow-1 bd-highlight"><div className='intro margin-bottom center-txt txt-md main-color'>Freezer</div>{foodInFreezer}</div>
-              <div className="p-2 flex-grow-1 bd-highlight border-right border-left"><div className='intro margin-bottom center-txt txt-md main-color'>Fridge</div>{foodInFridge}</div>
-              <div className="p-2 flex-grow-1 bd-highlight"><div className='intro margin-bottom center-txt txt-md main-color'>Pantry</div>{foodInPantry}</div>
+              <div className="p-2 flex-grow-1 bd-highlight "><div className='intro margin-bottom center-txt txt-md main-color'>Fridge</div>{foodInFridge}</div>
+              <div className=" flex-grow-1 bd-highlight"><div className='intro margin-bottom center-txt txt-md main-color'>Pantry</div>{foodInPantry}</div>
             </div>
             :
             <div>
