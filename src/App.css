@@ -16,7 +16,8 @@
   height: 30%;
 }
 .row-lg {
-  height: 50%;
+  height: 45%;
+  padding: 0 25%;
 }
 .col-12 {
   text-align: center;
@@ -25,7 +26,7 @@
   color: #489D86;
 }
 .second-color {
-  color: #F3C24F;
+  color: #FBC02D;
 }
 .txt-lg {
   font-size: 8vmin;
@@ -52,9 +53,10 @@
 }
 .btn-success:hover {
   color: #F4F6F6;
-  border-color: #F3C24F;
-  background-color: #F3C24F;
+  border-color: #FBC02D;
+  background-color: #FBC02D;
   font-weight: 800;
+  text-decoration: none;
 }
 .margin-sides {
   margin: 0 2vmin;
@@ -71,7 +73,28 @@
 .border-left {
   border-left: 2px solid #489D86!important
 } */
-.bckg-color {
+.bckg-color1 {
   background-color: #D4EFDF;
+}
+.bckg-color2 {
+  background-color: #FEF9E7;
+}
+
+.add-to-list:hover {
+  color: #489D86;
+  text-decoration: none;
+}
+.f-item:hover {
+  color: #FBC02D;
+  font-weight: 800;
+  text-decoration: none;
+}
+.pl-min {
+  font-weight: bold;
+  padding: .5vmin 1.5vmin;
+}
+
+.btn-sm {
+  border-radius: 10%;
 }
 

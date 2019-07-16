@@ -43,9 +43,8 @@ class SignUpForm extends Component {
 
   render() {
     return (
-      <div className="row row-lg align-items-center margin-top">
-        <div className="col" />
-        <form className="col-5" onSubmit={this.handleSubmit}>
+      <div className="row row-lg align-items-center justify-content-center margin-top">
+        <form onSubmit={this.handleSubmit}>
           <div className="form-group">
               <input
                 type="text"
@@ -100,7 +99,6 @@ class SignUpForm extends Component {
               </div>
           </div>
         </form>
-        <div className="col" />
       </div>
     );
   }

@@ -39,10 +39,12 @@ class MyFood extends Component {
         let foodInFreezer = 
             this.state.food.map((f, idx) => 
                 f.storage === 'Freezer' ? 
-                <div key={idx}>
-                  <div>{f.inFoodQty}</div>
-                  <Link to={{pathname: `/item/${f._id}`, state:{page: 'myfood'}}}>{f.name}</Link>
-                  {!f.inList ? <a href="#" style={{'fontSize':8+'px'}} onClick={() => this.handleAddToList(f._id)}>Add to list</a> : <div></div>}
+                <div key={idx} className={`d-flex flex-column row-lg ${idx%2 ? 'bckg-color1' : 'bckg-color2'}`}>
+                  <div className='d-flex main-color txt-md' > 
+                    <div className='p-1 flex-grow-1 bd-highlight right-txt'>{f.inFoodQty}</div>
+                    <Link className='f-item p-1 flex-grow-1 main-color' to={{pathname: `/item/${f._id}`, state:{page: 'myfood'}}}>{f.name}</Link>
+                  </div>
+                    {!f.inList ? <a className='add-to-list d-flex justify-content-center p-1 d-flex second-color txt-sm' href="#" style={{'textDecoration':'underline', 'fontStyle':'italic', 'fontWeight':'bold'}} onClick={() => this.handleAddToList(f._id)}>Add to list</a> : <div></div>}
                 </div>
                 : 
                 <div></div>
@@ -51,10 +53,12 @@ class MyFood extends Component {
         let foodInFridge = 
             this.state.food.map((f, idx) => 
                 f.storage === 'Fridge' ? 
-                <div key={idx}>
-                  <div>{f.inFoodQty}</div>
-                  <Link to={{pathname: `/item/${f._id}`, state:{page: 'myfood'}}}>{f.name}</Link>
-                  {!f.inList ? <a href="#" style={{'fontSize':8+'px'}} onClick={() => this.handleAddToList(f._id)}>Add to list</a> : <div></div>}
+                <div key={idx} className={`d-flex flex-column row-lg ${idx%2 ? 'bckg-color1' : 'bckg-color2'}`}>
+                  <div className='d-flex main-color txt-md' > 
+                    <div className='p-1 flex-grow-1 bd-highlight right-txt'>{f.inFoodQty}</div>
+                    <Link className='f-item p-1 flex-grow-1 main-color' to={{pathname: `/item/${f._id}`, state:{page: 'myfood'}}}>{f.name}</Link>
+                  </div>
+                    {!f.inList ? <a className='add-to-list d-flex justify-content-center p-1 d-flex second-color txt-sm' href="#" style={{'textDecoration':'underline', 'fontStyle':'italic', 'fontWeight':'bold'}} onClick={() => this.handleAddToList(f._id)}>Add to list</a> : <div></div>}
                 </div>
                 : 
                 <div></div>
@@ -63,12 +67,12 @@ class MyFood extends Component {
         let foodInPantry = 
             this.state.food.map((f, idx) => 
                 f.storage === 'Pantry' ? 
-                <div key={idx} className={`d-flex flex-column row-lg ${idx%2 ? 'bckg-color' : ''}`}>
-                  <div className='d-flex' > 
+                <div key={idx} className={`d-flex flex-column row-lg ${idx%2 ? 'bckg-color1' : 'bckg-color2'}`}>
+                  <div className='d-flex main-color txt-md' > 
                     <div className='p-1 flex-grow-1 bd-highlight right-txt'>{f.inFoodQty}</div>
-                    <Link className='p-1 flex-grow-1' to={{pathname: `/item/${f._id}`, state:{page: 'myfood'}}}>{f.name}</Link>
+                    <Link className='f-item p-1 flex-grow-1 main-color' to={{pathname: `/item/${f._id}`, state:{page: 'myfood'}}}>{f.name}</Link>
                   </div>
-                    {!f.inList ? <a className='p-1 d-flex' href="#" style={{'fontSize':10+'px'}} onClick={() => this.handleAddToList(f._id)}>Add to list</a> : <div></div>}
+                    {!f.inList ? <a className='add-to-list d-flex justify-content-center p-1 d-flex second-color txt-sm' href="#" style={{'textDecoration':'underline', 'fontStyle':'italic', 'fontWeight':'bold'}} onClick={() => this.handleAddToList(f._id)}>Add to list</a> : <div></div>}
                 </div>
                 : 
                 <div></div>
@@ -84,10 +88,10 @@ class MyFood extends Component {
             </div>
 
             {this.state.food.length > 0 ? 
-            <div className="d-flex bd-highlight">
-              <div className="p-2 flex-grow-1 bd-highlight"><div className='intro margin-bottom center-txt txt-md main-color'>Freezer</div>{foodInFreezer}</div>
-              <div className="p-2 flex-grow-1 bd-highlight "><div className='intro margin-bottom center-txt txt-md main-color'>Fridge</div>{foodInFridge}</div>
-              <div className=" flex-grow-1 bd-highlight"><div className='intro margin-bottom center-txt txt-md main-color'>Pantry</div>{foodInPantry}</div>
+            <div className="p-2 d-flex bd-highlight">
+              <div className="flex-grow-1 bd-highlight"><div className='intro margin-bottom center-txt txt-lg main-color'>Freezer</div>{foodInFreezer}</div>
+              <div className="flex-grow-1 bd-highlight"><div className='intro margin-bottom center-txt txt-lg main-color'>Fridge</div>{foodInFridge}</div>
+              <div className="flex-grow-1 bd-highlight"><div className='intro margin-bottom center-txt txt-lg main-color'>Pantry</div>{foodInPantry}</div>
             </div>
             :
             <div>

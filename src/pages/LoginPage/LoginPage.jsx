@@ -32,9 +32,8 @@ class LoginPage extends Component {
         <div className='row row-md align-items-end'>
           <div className='col-12 txt-lg main-color'>FOOD SAVER</div>
         </div>
-        <div className="row row-lg align-items-center loginpage">
-          <div className='col-4' />
-          <form className='col-4' onSubmit={this.handleSubmit}>
+        <div className="row row-lg align-items-center justify-content-center">
+          <form onSubmit={this.handleSubmit}>
             <div className="form-group">
               <input
                 type="email"
@@ -61,7 +60,6 @@ class LoginPage extends Component {
               <Link className="btn btn-outline-dark" to="/">Cancel</Link>
             </div>
           </form>
-          <div className='col-4' />
         </div>
       </div>
     );
