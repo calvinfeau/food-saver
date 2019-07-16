@@ -228,7 +228,7 @@ async function addSelectedItems(req, res) {
 async function saveRemainingItems(req, res) {
     try {
         await User.findById(req.user._id).then(user => {
-            req.params.choice === 'no' ? user.food.forEach(f => f.inList === true ? user.food.id(f._id).remove() : -1) : -1;
+            req.params.choice === 'no' ? user.food.forEach(f => f.inList === true && f.selected === false ? user.food.id(f._id).remove() : -1) : -1;
             return user.save(item => {
                 console.log('passed into save on addOne: ', item)
                 return res.status(200).json(item)

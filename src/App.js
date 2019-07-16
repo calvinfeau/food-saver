@@ -32,12 +32,18 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App">
+      <div className="App container-fluid">
+
+        <div className='row align-items-end'>
+          <div className='col-12 title'>FOOD SAVER</div>
+        </div>
         <Route exact path="/"
         render={() => (
-          <div>
-          <Link to='/login'>Log In</Link>
-          <Link to='/signup'>Sign Up</Link>
+          <div className='row align-items-center'>
+            <div className='col-6 login'><Link className="btn btn-success btn-lg" to='/login'>Log In</Link></div>
+            <div className='col-6'><Link className='btn btn-outline-success btn-lg' to='/signup'>Sign Up</Link></div>
+            
+            
           </div>
         )}
         
@@ -96,8 +102,8 @@ class App extends Component {
             } />
           </div>
            :
-          <div>
-             To Continue, please Log In.
+          <div className='col-12 intro'>
+             Welcome to the Food Saver App! <br/> To continue please login.
            </div>}
 
         </Switch>
