@@ -30,7 +30,7 @@ class LoginPage extends Component {
     return (
       <div className='container-fluid'>
         <div className='row row-sm align-items-end'>
-          <div className='col-12 title'>FOOD SAVER</div>
+          <div className='col-12 txt-lg main-color'>FOOD SAVER</div>
         </div>
         <div className="row row-lg align-items-center loginpage">
           <div className='col-4' />
@@ -44,7 +44,7 @@ class LoginPage extends Component {
                 name="email"
                 onChange={this.handleChange}
               />
-              <small id="emailHelp" className="form-text text-muted">We'll never share your email with anyone else.</small>
+              <small id="emailHelp" className="form-text second-color">We'll never share your email with anyone else.</small>
             </div>
             <div className="form-group">
               <input

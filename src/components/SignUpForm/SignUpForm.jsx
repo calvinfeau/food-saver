@@ -43,7 +43,7 @@ class SignUpForm extends Component {
 
   render() {
     return (
-      <div className="row row-lg align-items-center">
+      <div className="row row-lg align-items-center margin-top">
         <div className="col" />
         <form className="col-5" onSubmit={this.handleSubmit}>
           <div className="form-group">
@@ -86,14 +86,18 @@ class SignUpForm extends Component {
                 onChange={this.handleChange}
               />
           </div>
-            <div className="buttons">
-              <button
-                className="btn btn-success"
-                disabled={this.isFormInvalid()}
-              >
-                Sign Up
-              </button>
-              <Link className="btn btn-outline-dark" to="/">Cancel</Link>
+            <div className="d-flex bd-highlight justify-content-center">
+              <div className='p-2 bd-highlight'>
+                <button
+                  className="btn btn-success"
+                  disabled={this.isFormInvalid()}
+                >
+                  Sign Up
+                </button>
+              </div>
+              <div className='p-2 bd-highlight'>
+                <Link className="btn btn-outline-dark" to="/">Cancel</Link>
+              </div>
           </div>
         </form>
         <div className="col" />

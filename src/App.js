@@ -39,16 +39,16 @@ class App extends Component {
           render={() => (
             <div className='container-fluid'>
               <div className='row row-sm align-items-end'>
-                <div className='col-12 title'>FOOD SAVER</div>
+                <div className='col-12 txt-lg main-color'>FOOD SAVER</div>
               </div>
               <div className='row row-lg align-items-center'>
-                <div className='col login'><Link className="btn btn-success btn-lg" to='/login'>Log In</Link></div>
+                <div className='col right-txt'><Link className="btn btn-success btn-lg" to='/login'>Log In</Link></div>
                 <div className='col-1' />
-                <div className='col'><Link className='btn btn-outline-success btn-lg' to='/signup'>Sign Up</Link></div>
+                <div className='col'><Link className='btn btn-success btn-lg' to='/signup'>Sign Up</Link></div>
               </div>
               <div className='row row-sm align-items-start'>
-                <div className='col-12 intro'>
-                  Welcome to the Food Saver App! <br/> To continue please login.
+                <div className='col-12 text-md main-color'>
+                  Welcome to the Food Saver App! <br/><span className='txt-sm second-color'>To continue please login.</span> 
                 </div>
               </div>
             </div>

@@ -64,8 +64,11 @@ class MyFood extends Component {
             this.state.food.map((f, idx) => 
                 f.storage === 'Pantry' ? 
                 <div key={idx}>
-                  <div>{f.inFoodQty}</div>
-                  <Link to={{pathname: `/item/${f._id}`, state:{page: 'myfood'}}}>{f.name}</Link>
+                  
+                  <div className={`d-flex bd-highlight ${idx%2 ? 'bckg-color' : ''}`} > 
+                    <div className='p-2 flex-grow-1 bd-highlight right-txt'>{f.inFoodQty}</div>
+                    <Link className='p-2 flex-grow-1 bd-highlight' to={{pathname: `/item/${f._id}`, state:{page: 'myfood'}}}>{f.name}</Link>
+                  </div>
                   {!f.inList ? <a href="#" style={{'fontSize':8+'px'}} onClick={() => this.handleAddToList(f._id)}>Add to list</a> : <div></div>}
                 </div>
                 : 
@@ -74,24 +77,24 @@ class MyFood extends Component {
 
         return (
           <div className='container-fluid'>
-            <div className='row row-sm align-items-center header'>
-              <span className='col intro'>My Food Page</span>
-              <Link className='col-2 align-right' to={{ pathname: '/create', state:{inFood: true, inList: false, page: 'myfood'}}}>Add Item</Link>
-              <Link className='col-2 align-right' to='/mylist'>My List</Link>
-              <Link className='col-1 align-right' to="/" onClick={this.props.handleLogOut}>Logout</Link>
+            <div className='row row-sm d-flex bd-highlight align-items-center header'>
+              <span className='p-2 flex-grow-1 bd-highlight txt-lg light-txt'>My Food Page</span>
+              <Link className='p-2 bd-highlight btn btn-success margin-sides' to={{ pathname: '/create', state:{inFood: true, inList: false, page: 'myfood'}}}>Add Item</Link>
+              <Link className='p-2 bd-highlight btn btn-success margin-sides' to='/mylist'>My List</Link>
+              <Link className='p-2 bd-highlight btn btn-success margin-sides' to="/" onClick={this.props.handleLogOut}>Logout</Link>
             </div>
-            <h3>Hi {this.state.name}</h3>
-              {this.state.food.length > 0 ? 
-              <div>
-                <div><h3>Freezer</h3>{foodInFreezer}</div>
-                <div><h3>Fridge</h3>{foodInFridge}</div>
-                <div><h3>Pantry</h3>{foodInPantry}</div>
-              </div>
-              :
-              <div>
-                <Link to={{ pathname: '/create', state:{inFood: true, inList: false, page: 'myfood'}}}>Add Item</Link>
-              </div>
-              }
+
+            {this.state.food.length > 0 ? 
+            <div className="d-flex bd-highlight">
+              <div className="p-2 flex-grow-1 bd-highlight"><div className='intro margin-bottom center-txt txt-md main-color'>Freezer</div>{foodInFreezer}</div>
+              <div className="p-2 flex-grow-1 bd-highlight border-right border-left"><div className='intro margin-bottom center-txt txt-md main-color'>Fridge</div>{foodInFridge}</div>
+              <div className="p-2 flex-grow-1 bd-highlight"><div className='intro margin-bottom center-txt txt-md main-color'>Pantry</div>{foodInPantry}</div>
+            </div>
+            :
+            <div>
+              <Link to={{ pathname: '/create', state:{inFood: true, inList: false, page: 'myfood'}}}>Add Item</Link>
+            </div>
+            }
         </div>
       )
     }
