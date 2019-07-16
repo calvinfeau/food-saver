@@ -5,7 +5,7 @@ import userService from "../../utils/userService";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 import RemainingItemsPage from '../RemainingItemsPage/RemainingItemsPage'
-import LogInPage from '../LogInPage/LogInPage';
+import LogInPage from 'src/pages/LogInPage/LogInPage.jsx';
 import MyFoodPage from '../MyFoodPage/MyFoodPage';
 import MyListPage from '../MyListPage/MyListPage';
 import NewItemPage from '../NewItemPage/NewItemPage';
