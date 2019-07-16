@@ -4,6 +4,7 @@ import userService from "../src/utils/userService";
 import logo from './logo.svg';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
+import RemainingItemsPage from './pages/RemainingItemsPage/RemainingItemsPage'
 import SignUpPage from '../src/pages/SignUpPage/SignUpPage';
 import LogInPage from '../src/pages/LogInPage/LogInPage';
 import MyFoodPage from './pages/MyFoodPage/MyFoodPage';
@@ -11,7 +12,6 @@ import MyListPage from './pages/MyListPage/MyListPage';
 import NewItemPage from './pages/NewItemPage/NewItemPage';
 import EditItemPage from './pages/EditItemPage/EditItemPage';
 import ItemsAddedPage from './pages/ItemsAddedPage/ItemsAddedPage'
-import RemainingItemsPage from './pages/RemainingItemsPage/RemainingItemsPage'
 
 class App extends Component {
   constructor() {
