@@ -34,14 +34,15 @@ class App extends Component {
     return (
       <div className="App container-fluid">
 
-        <div className='row align-items-end'>
+        <div className='row align-items-center'>
           <div className='col-12 title'>FOOD SAVER</div>
         </div>
         <Route exact path="/"
         render={() => (
           <div className='row align-items-center'>
-            <div className='col-6 login'><Link className="btn btn-success btn-lg" to='/login'>Log In</Link></div>
-            <div className='col-6'><Link className='btn btn-outline-success btn-lg' to='/signup'>Sign Up</Link></div>
+            <div className='col-5 login'><Link className="btn btn-success btn-lg" to='/login'>Log In</Link></div>
+            <div className='col-2' />
+            <div className='col-5'><Link className='btn btn-outline-success btn-lg' to='/signup'>Sign Up</Link></div>
             
             
           </div>

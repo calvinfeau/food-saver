@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import userService from "../../utils/userService";
+import './LoginPage.css'
 
 class LoginPage extends Component {
   state = {
@@ -27,11 +28,10 @@ class LoginPage extends Component {
 
   render() {
     return (
-      <div className="LoginPage">
-        <header className="header-footer">Log In</header>
-        <form className="form-horizontal" onSubmit={this.handleSubmit}>
+      <div className="row align-items-center loginpage">
+        <div className='col-4'></div>
+        <form className='col-4' onSubmit={this.handleSubmit}>
           <div className="form-group">
-            <div className="col-sm-12">
               <input
                 type="email"
                 className="form-control"
@@ -40,10 +40,9 @@ class LoginPage extends Component {
                 name="email"
                 onChange={this.handleChange}
               />
-            </div>
+              <small id="emailHelp" className="form-text text-muted">We'll never share your email with anyone else.</small>
           </div>
           <div className="form-group">
-            <div className="col-sm-12">
               <input
                 type="password"
                 className="form-control"
@@ -52,16 +51,13 @@ class LoginPage extends Component {
                 name="pw"
                 onChange={this.handleChange}
               />
-            </div>
           </div>
-          <div className="form-group">
-            <div className="col-sm-12 text-center">
-              <button className="btn btn-default">Log In</button>
-              &nbsp;&nbsp;&nbsp;
-              <Link to="/">Cancel</Link>
-            </div>
+          <div className="buttons">
+              <button className="btn btn-success">Log In</button>
+              <Link className='btn btn-outline-dark' to="/">Cancel</Link>
           </div>
         </form>
+        <div className='col-4'></div>
       </div>
     );
   }

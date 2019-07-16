@@ -29,7 +29,7 @@ class SignUpForm extends Component {
     } catch (err) {
       // Invalid user data (probably duplicate email)
       // this.props.updateMessage(err.message);
-      console.log("shit broke");
+      // console.log("shit broke");
     }
   };
 
@@ -43,7 +43,7 @@ class SignUpForm extends Component {
 
   render() {
     return (
-      <div>
+      <div className='container'>
         <header className="header-footer">Sign Up</header>
         <form className="form-horizontal" onSubmit={this.handleSubmit}>
           <div className="form-group">

@@ -1,0 +1,8 @@
+.loginpage {
+    height: 45%;
+}
+
+.buttons {
+    display: flex;
+    justify-content: space-between;
+}
