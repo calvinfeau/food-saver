@@ -1,4 +1,4 @@
-import tokenService, {getToken} from '../utils/tokenService'
+import tokenService from '../utils/tokenService'
 
 
 export function getMyFoodItems() {

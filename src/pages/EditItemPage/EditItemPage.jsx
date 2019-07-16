@@ -2,11 +2,8 @@ import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
 import { getItem, editItem, deleteItem } from '../../services/api';
 
-// let located;
 let fromPage;
 let quantity;
-// let isInFood;
-// let isInList;
 
 class EditItemPage extends Component {
     constructor(props) {
@@ -25,16 +22,9 @@ class EditItemPage extends Component {
     componentDidMount() {
         var self = this;
         var itemId = this.props.match.params.itemId;
-        console.log('location:', this.props.location.state.page)
-
-        // isInFood = this.props.location.state.inFood ? true : false;
-        // isInList = this.props.location.state.inList ? true : false;
+        // console.log('location:', this.props.location.state.page)
         fromPage = this.props.location.state.page;
-
         getItem(itemId).then(function(item) {
-            // item.inFoodQty ? self.setState((prevState) => ({ ...prevState, inFoodQty: item.inFoodQty, inFood: true})) : self.setState({ inFoodQty: 0, inFood: false});
-            // item.inListQty ? self.setState((prevState) => ({ ...prevState, inListQty: item.inListQty, inList: true})) : self.setState({ inListQty: 0, inList: false});
-            
             self.setState((prevState) => ({
                 ...prevState,
                 name: item.name,
@@ -65,16 +55,14 @@ class EditItemPage extends Component {
     
     handleInFood = (e) => {
         let checked = e.target.checked;
-        console.log(checked)
+        // console.log(checked)
         this.setState((state) => {return{...state, inFood: checked, inFoodQty: quantity}})        
-        // console.log('inFood: ', this.state.inFood)
     }
     
     handleInList = (e) => {
         let checked = e.target.checked;
-        console.log(checked)
+        // console.log(checked)
         this.setState((state) => {return{...state, inList: checked, inListQty: quantity}})
-        // console.log('inList: ', this.state.inList)
     }
 
     handleSubmit = (e) => {

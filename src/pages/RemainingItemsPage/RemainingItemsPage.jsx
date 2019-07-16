@@ -4,10 +4,6 @@ import { saveItems } from '../../services/api';
 
 
 class RemainingItemsPage extends Component {
-    constructor() {
-        super();
-    }
-
     handleSaveItems = (choice) => {
         saveItems(choice);
     }

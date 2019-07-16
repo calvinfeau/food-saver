@@ -108,6 +108,7 @@ class MyList extends Component {
                 : 
                 <div></div>
               )
+
         return (
           <div className='container-fluid'>
             <div className='row-md d-flex bd-highlight align-items-center header'>
@@ -124,13 +125,13 @@ class MyList extends Component {
               <div className="col-4"><div className='intro margin-bottom center-txt txt-lg main-color'>Pantry</div>{foodInPantry}</div>
             </div>
             :
-              <div>
-                <Link to={{ pathname: '/create', state:{inList: true, inFood: false, page: 'mylist'}}}>Add Item</Link>
-              </div>
-              }
-              <br/><br/><br/>
-              <Link to='/mylist/added' onClick={this.handleAddAll}>Add All</Link>
-              <Link to='/mylist/remaining' onClick={this.handleAddSelected}>Add Selected Items</Link>
+            <div>
+              <Link to={{ pathname: '/create', state:{inList: true, inFood: false, page: 'mylist'}}}>Add Item</Link>
+            </div>
+            }
+            <br/><br/><br/>
+            <Link to='/mylist/added' onClick={this.handleAddAll}>Add All</Link>
+            <Link to='/mylist/remaining' onClick={this.handleAddSelected}>Add Selected Items</Link>
           </div>
         );
       }

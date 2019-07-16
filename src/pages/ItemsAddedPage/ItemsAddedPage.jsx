@@ -1,12 +1,7 @@
 import React, {Component} from 'react';
 import { Link } from 'react-router-dom';
 
-
 class ItemsAddedPage extends Component {
-    constructor() {
-        super();
-    }
-
     render() {
         return (
         <div>
@@ -14,7 +9,6 @@ class ItemsAddedPage extends Component {
             <Link to = '/mylist'>Back to My List</Link>
             <br/>
             <Link to = '/myfood'>Back to My Food</Link>
-
         </div>
         )
     }

@@ -4,10 +4,15 @@ import userService from "../../utils/userService";
 import './LogInPage.css'
 
 class LogInPage extends Component {
-  state = {
-    email: "",
-    pw: ""
-  };
+  constructor() {
+    super();
+    this.state = {
+      email: "",
+      pw: ""
+    }
+  }
+  // state = {
+  // };
 
   handleChange = e => {
     this.setState({

@@ -4,7 +4,6 @@ import {createItem} from '../../services/api';
 
 let isInFood;
 let isInList;
-// let fromPage;
 let quantity;
 
 class NewItemPage extends Component {
@@ -14,20 +13,16 @@ class NewItemPage extends Component {
             name:'',
             category: 'Dry & Packaged Food',
             storage: 'Pantry',
-            // inFoodQty: 1,
-            // inListQty: 1,
             inFood: isInFood,
             inList: isInList
-            // selected: false
         }
     }
 
     componentDidMount() {
         isInFood = this.props.location.state.inFood;
         isInList = this.props.location.state.inList;
-        // fromPage = this.props.location.state.page;
-        console.log('is In food:', isInFood)
-        console.log('is in list:', isInList)
+        // console.log('is In food:', isInFood)
+        // console.log('is in list:', isInList)
         // console.log('state mounted: ', this.state)
         // console.log(fromPage)
     }
@@ -42,12 +37,15 @@ class NewItemPage extends Component {
     handleName = (e) => {
         this.setState({ name: e.target.value })
     }
+
     handleCategory = (e) => {
         this.setState({ category: e.target.value })
     }
+
     handleStorage = (e) => {
         this.setState({ storage: e.target.value })
     }
+
     handleQuantity = (e) => {
         quantity = e.target.value;
         this.state.inFood ? 
@@ -57,7 +55,6 @@ class NewItemPage extends Component {
     }
     
     handleInFood = (e) => {
-        // isInFood = e.target.checked;
         let checked = e.target.checked;
         this.setState((state) => {return{...state, inFood: checked, inFoodQty: quantity}})        
         // console.log('inFood: ', this.state.inFood)
@@ -65,7 +62,6 @@ class NewItemPage extends Component {
     
     handleInList = (e) => {
         let checked = e.target.checked;
-        // isInList = e.target.checked;
         this.setState((state) => {return{...state, inList: checked, inListQty: quantity}})        
         // console.log('inList: ', this.state.inList)
     }
