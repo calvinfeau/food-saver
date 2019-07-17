@@ -45,12 +45,12 @@ HTML5 | CSS3 | Javascript | React.js | Node.js | Express | MongoDB | Mongoose | 
 
 ## Getting Started
 
+https://groceries-helper.herokuapp.com/
 
 <br>
 
 ## Next Steps 
 
 - Create cuztomizable categories for the food page and the list page  
-- Update the starting budget automatically when a detail with an expense has been added and completed
-- Upload photos of previous trips
-- Add a map feature to both previous and upcoming trips to draw itineraries
+- CReate the UX/UI on mobile/tablets
+- Add a Drag and Drop feature to be able to dynamically re-organize items on both food and list page
