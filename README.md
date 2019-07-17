@@ -45,12 +45,17 @@ HTML5 | CSS3 | Javascript | React.js | Node.js | Express | MongoDB | Mongoose | 
 
 ## Getting Started
 
-https://groceries-helper.herokuapp.com/
-
+### [Click here](https://groceries-helper.herokuapp.com/)
 <br>
 
 ## Next Steps 
 
-- Create cuztomizable categories for the food page and the list page  
-- CReate the UX/UI on mobile/tablets
-- Add a Drag and Drop feature to be able to dynamically re-organize items on both food and list page
+- Create cuztomizable categories for the food page and the list page 
+
+- Create the UX/UI on mobile/tablets
+
+- Re design the UX/UI for desktop
+
+- Add a Drag and Drop feature to be able to dynamically re-organize items on both food and list page 
+
+- **Connect the app with a database where the user will be able to choose food items from and eventually being notify for expiration date**
