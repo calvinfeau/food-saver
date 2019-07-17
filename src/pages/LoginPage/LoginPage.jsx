@@ -60,7 +60,7 @@ class LogInPage extends Component {
                 onChange={this.handleChange}
               />
             </div>
-            <div className="buttons">
+            <div className="d-flex justify-content-between">
               <button className="btn btn-success">Log In</button>
               <Link className="btn btn-outline-dark" to="/">Cancel</Link>
             </div>

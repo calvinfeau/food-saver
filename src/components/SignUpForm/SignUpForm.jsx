@@ -85,18 +85,14 @@ class SignUpForm extends Component {
                 onChange={this.handleChange}
               />
           </div>
-            <div className="d-flex bd-highlight justify-content-center">
-              <div className='p-2 bd-highlight'>
+            <div className="d-flex bd-highlight justify-content-between">
                 <button
                   className="btn btn-success"
                   disabled={this.isFormInvalid()}
                 >
                   Sign Up
                 </button>
-              </div>
-              <div className='p-2 bd-highlight'>
                 <Link className="btn btn-outline-dark" to="/">Cancel</Link>
-              </div>
           </div>
         </form>
       </div>

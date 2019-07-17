@@ -13,10 +13,10 @@
   height: 5%;
 }
 .row-md {
-  height: 30%;
+  height: 25%;
 }
 .row-lg {
-  height: 45%;
+  height: 50%;
 }
 .pd-lg {
   padding: 0 25%;
@@ -33,11 +33,11 @@
 .txt-lg {
   font-size: 8vmin;
 }
-.txt-sm {
-  font-size: 2.5vmin;
-}
 .txt-md {
   font-size: 5vmin;
+}
+.txt-sm {
+  font-size: 2.5vmin;
 }
 .right-txt {
   text-align: right;
@@ -94,5 +94,10 @@
   font-weight: bold;
   padding: .25vmin 0.5vmin;
 }
-
+.up-down-btn {
+  font-size: 3vmin;
+}
+.up-down-btn:hover {
+  text-decoration: none;
+}
 

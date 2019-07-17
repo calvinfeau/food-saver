@@ -81,45 +81,56 @@ class EditItemPage extends Component {
 
     render() {
         return(
-            <div>
-                <h1>Edit Item</h1>
-                <hr/>
-                <form onSubmit={this.handleSubmit}>
-                    <label>Name:
-                        <input type='text' value={this.state.name} onChange={this.handleName}/>
-                    </label>
-                    <label>What kind of food is it ?
-                    <select value={this.state.category} onChange={this.handleCategory}>
-                        <option value='Meats & Seafood'>Meats & Seafood</option>
-                        <option value='Fruits & Vegetables'>Fruits & Vegetables</option>
-                        <option value='Spices & Condiments'>Spices & Condiments</option>
-                        <option value='Dry & Packaged Food'>Dry & Packaged Food</option>
-                    </select>
-                    </label>
-                    <label>Where do you keep it ?
-                    <select value={this.state.storage} onChange={this.handleStorage}>
-                        <option value='Fridge'>Fridge</option>
-                        <option value='Freezer'>Freezer</option>
-                        <option value='Pantry'>Pantry</option>
-                    </select>
-                    </label>
-                    <label>How many ?
-                    {this.props.location.state.page === 'myfood' ?
-                    <input type="number" name='inFoodQty' value={this.state.inFoodQty} onChange={this.handleQuantity} />
-                    :
-                    <input type="number" name='inListQty' value={this.state.inListQty} onChange={this.handleQuantity} />
-                    }
-                    </label>
-                    <label>My Food
-                        <input type="checkbox" value={this.state.inFood} onChange={this.handleInFood} checked={this.state.inFood}/>
-                    </label>
-                    <label>My List
-                        <input type="checkbox" value={this.state.inList} onChange={this.handleInList} checked={this.state.inList} />
-                    </label>
-                    <input type="submit" value='Edit'/>
+            <div className='container-fluid'>
+                <div className="row row-md align-items-center justify-content-center header light-txt txt-lg">New Item</div>
+                <form className='pd-lg justify-content-center' onSubmit={this.handleSubmit}>
+                    <div className="form-group">
+                        <input className="form-control" type='text' placeholder='Name' value={this.state.name} onChange={this.handleName}/>
+                    </div>
+                    <hr/>
+                    <div className="form-group">
+                        <select className="form-control" value={this.state.category} onChange={this.handleCategory}>
+                            <option value='Meats & Seafood'>Meats & Seafood</option>
+                            <option value='Fruits & Vegetables'>Fruits & Vegetables</option>
+                            <option value='Spices & Condiments'>Spices & Condiments</option>
+                            <option value='Dry & Packaged Food'>Dry & Packaged Food</option>
+                            <option value='Beverages'>Beverages</option>
+                            <option value='Dairy'>Dairy</option>
+                        </select>
+                    </div>
+                    <hr/>
+                    <div className="form-group">
+                        <select className="form-control" value={this.state.storage} onChange={this.handleStorage}>
+                            <option value='Fridge'>Fridge</option>
+                            <option value='Freezer'>Freezer</option>
+                            <option value='Pantry'>Pantry</option>
+                        </select>
+                    </div>
+                    <hr/>
+                    <div className='form-row align-items-center justify-content-between'>
+                        <div className="form-group col-3">
+                            <label>Quantity</label>
+                            {this.props.location.state.page === 'myfood' ?
+                            <input className="form-control" type="number" name='inFoodQty' value={this.state.inFoodQty} onChange={this.handleQuantity} />
+                            :
+                            <input className="form-control" type="number" name='inListQty' value={this.state.inListQty} onChange={this.handleQuantity} />
+                            }
+                        </div>
+                        <div className="form-group col-3">
+                            <input className="form-check-input" type="checkbox" value={this.state.inFood} onChange={this.handleInFood} checked={this.state.inFood}/>
+                            <label className="form-check-label">My Food</label>
+                        </div>
+                        <div className="form-group col-3">
+                            <input className="form-check-input" type="checkbox" value={this.state.inList} onChange={this.handleInList} checked={this.state.inList} />
+                            <label className="form-check-label">My List</label>
+                        </div>
+                    </div>
+                    <div className="d-flex justify-content-between">
+                        <input className="btn btn-success" type="submit" value='Edit'/>
+                        <Link className="btn btn-outline-dark" to={`/${this.props.location.state.page}`}>Cancel</Link>
+                        <a className="btn btn-outline-dark" href="#" onClick={this.handleDelete}>Delete</a>
+                    </div>
                 </form>
-                <Link to={`/${this.props.location.state.page}`}>Cancel</Link>
-                <a href="#" onClick={this.handleDelete}>Delete</a>
             </div>
         )
     }

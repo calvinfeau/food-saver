@@ -72,12 +72,12 @@ class MyList extends Component {
                 f.storage === 'Freezer' ? 
                 <div key={idx} className={`d-flex row-lg align-items-center justify-content-around ${idx%2 ? 'bckg-color1' : 'bckg-color2'}`}>
                     <div className='d-flex align-items-center'>
-                      <a className='d-flex btn-success btn-sm pl-min center-txt align-items-center' href="#" onClick={() => this.handleAddOne(f._id)}>
-                        <i class="material-icons">keyboard_arrow_up</i>
+                      <a className='d-flex pl-min center-txt align-items-center' href="#" onClick={() => this.handleAddOne(f._id)}>
+                        <i className="up-down-btn material-icons">keyboard_arrow_up</i>
                       </a>
                       <div className='p-2 bd-highlight main-color center-txt'>{f.inListQty}</div>
-                      <a className='d-flex btn-success btn-sm pl-min center-txt align-items-center' style = {{}}href="#" onClick={() => this.handleSubOne(f._id)}>
-                        <i class="material-icons">keyboard_arrow_down</i>
+                      <a className='d-flex pl-min center-txt align-items-center' style = {{}}href="#" onClick={() => this.handleSubOne(f._id)}>
+                        <i className="up-down-btn material-icons">keyboard_arrow_down</i>
                       </a>
                     </div>
                   <Link className='f-item main-color center-txt' to={{pathname: `/item/${f._id}`, state:{page: 'mylist'}}}>{f.name}</Link>
@@ -92,12 +92,12 @@ class MyList extends Component {
                 f.storage === 'Fridge' ? 
                 <div key={idx} className={`d-flex row-lg align-items-center justify-content-around ${idx%2 ? 'bckg-color1' : 'bckg-color2'}`}>
                     <div className='d-flex align-items-center'>
-                      <a className='d-flex btn-success btn-sm pl-min center-txt align-items-center' href="#" onClick={() => this.handleAddOne(f._id)}>
-                        <i class="material-icons">keyboard_arrow_up</i>
+                      <a className='d-flex pl-min center-txt align-items-center' href="#" onClick={() => this.handleAddOne(f._id)}>
+                        <i className='up-down-btn material-icons'>keyboard_arrow_up</i>
                       </a>
                       <div className='p-2 bd-highlight main-color center-txt'>{f.inListQty}</div>
-                      <a className='d-flex btn-success btn-sm pl-min center-txt align-items-center' style = {{}}href="#" onClick={() => this.handleSubOne(f._id)}>
-                        <i class="material-icons">keyboard_arrow_down</i>
+                      <a className='d-flex pl-min center-txt align-items-center' style = {{}}href="#" onClick={() => this.handleSubOne(f._id)}>
+                        <i className='up-down-btn material-icons'>keyboard_arrow_down</i>
                       </a>
                     </div>
                   <Link className='f-item main-color center-txt' to={{pathname: `/item/${f._id}`, state:{page: 'mylist'}}}>{f.name}</Link>
@@ -112,12 +112,12 @@ class MyList extends Component {
                 f.storage === 'Pantry' ? 
                 <div key={idx} className={`d-flex row-lg align-items-center justify-content-around ${idx%2 ? 'bckg-color1' : 'bckg-color2'}`}>
                     <div className='d-flex align-items-center'>
-                      <a className='d-flex btn-success btn-sm pl-min center-txt align-items-center' href="#" onClick={() => this.handleAddOne(f._id)}>
-                        <i class="material-icons">keyboard_arrow_up</i>
+                      <a className='d-flex pl-min center-txt align-items-center' href="#" onClick={() => this.handleAddOne(f._id)}>
+                        <i className='up-down-btn material-icons'>keyboard_arrow_up</i>
                       </a>
                       <div className='p-2 bd-highlight main-color center-txt'>{f.inListQty}</div>
-                      <a className='d-flex btn-success btn-sm pl-min center-txt align-items-center' style = {{}}href="#" onClick={() => this.handleSubOne(f._id)}>
-                        <i class="material-icons">keyboard_arrow_down</i>
+                      <a className='d-flex pl-min center-txt align-items-center' style = {{}}href="#" onClick={() => this.handleSubOne(f._id)}>
+                        <i className='up-down-btn material-icons'>keyboard_arrow_down</i>
                       </a>
                     </div>
                   <Link className='f-item main-color center-txt' to={{pathname: `/item/${f._id}`, state:{page: 'mylist'}}}>{f.name}</Link>
@@ -130,7 +130,9 @@ class MyList extends Component {
         return (
           <div className='container-fluid'>
             <div className='row-md d-flex bd-highlight align-items-center header'>
-              <span className='p-2 flex-grow-1 bd-highlight txt-lg light-txt'>My List Page</span>
+              <span className='p-2 flex-grow-1 bd-highlight txt-lg light-txt'>My List</span>
+              <Link className='p-2 bd-highlight btn btn-success btn-lg margin-sides' to='/mylist/added' onClick={this.handleAddAll}>Add All</Link>
+              <Link className='p-2 bd-highlight btn btn-success btn-lg margin-sides' to='/mylist/remaining' onClick={this.handleAddSelected}>Add Selected Items</Link>
               <Link className='p-2 bd-highlight btn btn-success btn-lg margin-sides' to={{ pathname: '/create', state:{inFood: false, inList: true, page: 'mylist'}}}>Add Item</Link>
               <Link className='p-2 bd-highlight btn btn-success btn-lg margin-sides' to='/myfood'>My Food</Link>
               <Link className='p-2 bd-highlight btn btn-success margin-sides' to="/" onClick={this.props.handleLogOut}>Logout</Link>
@@ -138,18 +140,18 @@ class MyList extends Component {
 
             {this.state.food.length > 0 ? 
             <div className="p-2 d-flex bd-highlight">
-              <div className="col-4"><div className='intro margin-bottom center-txt txt-lg main-color'>Freezer</div>{foodInFreezer}</div>
-              <div className="col-4"><div className='intro margin-bottom center-txt txt-lg main-color'>Fridge</div>{foodInFridge}</div>
-              <div className="col-4"><div className='intro margin-bottom center-txt txt-lg main-color'>Pantry</div>{foodInPantry}</div>
+              <div className="col"><div className='intro margin-bottom center-txt txt-md main-color'>Freezer</div>{foodInFreezer}</div>
+              <div className="col"><div className='intro margin-bottom center-txt txt-md main-color'>Fridge</div>{foodInFridge}</div>
+              <div className="col"><div className='intro margin-bottom center-txt txt-md main-color'>Freezer</div>{foodInFreezer}</div>
+              <div className="col"><div className='intro margin-bottom center-txt txt-md main-color'>Fridge</div>{foodInFridge}</div>
+              <div className="col"><div className='intro margin-bottom center-txt txt-md main-color'>Fridge</div>{foodInFridge}</div>
+              <div className="col"><div className='intro margin-bottom center-txt txt-md main-color'>Pantry</div>{foodInPantry}</div>
             </div>
             :
             <div>
               <Link to={{ pathname: '/create', state:{inList: true, inFood: false, page: 'mylist'}}}>Add Item</Link>
             </div>
             }
-            <br/><br/><br/>
-            <Link to='/mylist/added' onClick={this.handleAddAll}>Add All</Link>
-            <Link to='/mylist/remaining' onClick={this.handleAddSelected}>Add Selected Items</Link>
           </div>
         );
       }
