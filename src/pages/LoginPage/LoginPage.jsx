@@ -1,7 +1,7 @@
 import React, { Component } from "./node_modules/react";
 import { Link } from "./node_modules/react-router-dom";
 import userService from "../../utils/userService";
-import './LogInPage.css'
+import './LoginPage.css'
 
 class LogInPage extends Component {
   constructor(props) {
