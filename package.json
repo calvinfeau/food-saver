@@ -1,9 +1,6 @@
 {
   "name": "groceries-helper",
   "version": "0.1.0",
-  "engines": {
-    "node": "11.14.0"
-  },
   "private": true,
   "dependencies": {
     "bcrypt": "^3.0.6",

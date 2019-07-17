@@ -29,7 +29,7 @@ class SignUpForm extends Component {
     } catch (err) {
       // Invalid user data (probably duplicate email)
       // this.props.updateMessage(err.message);
-      // console.log("shit broke");
+      console.log("catch err signup");
     }
   };
 

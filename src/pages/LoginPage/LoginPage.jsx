@@ -4,8 +4,8 @@ import userService from "../../utils/userService";
 import './LogInPage.css'
 
 class LogInPage extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       email: "",
       pw: ""
