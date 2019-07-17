@@ -60,11 +60,9 @@ HTML5 | CSS3 | Javascript | React.js | Node.js | Express | MongoDB | Mongoose | 
 
 ## Next Steps 
 
+- Create the UX/UI on mobile/tablet and redesign the UX/UI for desktop
+
 - Create cuztomizable categories for the food page and the list page 
-
-- Create the UX/UI on mobile/tablets
-
-- Re design the UX/UI for desktop
 
 - Add a Drag and Drop feature to be able to dynamically re-organize items on both food and list page 
 
