@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component } from "./node_modules/react";
 import SignUpForm from "../../components/SignUpForm/SignUpForm";
 
 class SignUpPage extends Component {

@@ -5,13 +5,13 @@ import userService from "../../utils/userService";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 import RemainingItemsPage from 'pages/RemainingItemsPage/RemainingItemsPage'
-import LogInPage from 'pages/LogInPage/LogInPage';
-import MyFoodPage from 'pages/MyFoodPage/MyFoodPage';
-import MyListPage from 'pages/MyListPage/MyListPage';
+import LogInPage from 'pages/LoginPage/LoginPage';
+import MyFoodPage from 'pages/MyfoodPage/MyfoodPage';
+import MyListPage from 'pages/MylistPage/MylistPage';
 import NewItemPage from 'pages/NewItemPage/NewItemPage';
 import EditItemPage from 'pages/EditItemPage/EditItemPage';
 import ItemsAddedPage from 'pages/ItemsAddedPage/ItemsAddedPage'
-import SignUpPage from 'pages/SignUpPage/SignUpPage';
+import SignUpPage from 'pages/SignupPage/SignupPage';
 
 class App extends Component {
   constructor() {
