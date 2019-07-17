@@ -17,6 +17,8 @@
 }
 .row-lg {
   height: 45%;
+}
+.pd-lg {
   padding: 0 25%;
 }
 .col-12 {
@@ -79,7 +81,6 @@
 .bckg-color2 {
   background-color: #FEF9E7;
 }
-
 .add-to-list:hover {
   color: #489D86;
   text-decoration: none;
@@ -91,10 +92,7 @@
 }
 .pl-min {
   font-weight: bold;
-  padding: .5vmin 1.5vmin;
+  padding: .25vmin 0.5vmin;
 }
 
-.btn-sm {
-  border-radius: 10%;
-}
 
