@@ -11,8 +11,8 @@ class NewItemPage extends Component {
         super(props);
         this.state = {
             name:'',
-            category: 'Dry & Packaged Food',
-            storage: 'Pantry',
+            category: 'Meats & Seafood',
+            storage: 'Fridge',
             inFood: isInFood,
             inList: isInList
         }
@@ -21,10 +21,6 @@ class NewItemPage extends Component {
     componentDidMount() {
         isInFood = this.props.location.state.inFood;
         isInList = this.props.location.state.inList;
-        // console.log('is In food:', isInFood)
-        // console.log('is in list:', isInList)
-        // console.log('state mounted: ', this.state)
-        // console.log(fromPage)
     }
 
     handleSubmit = (e) => {
@@ -57,13 +53,11 @@ class NewItemPage extends Component {
     handleInFood = (e) => {
         let checked = e.target.checked;
         this.setState((state) => {return{...state, inFood: checked, inFoodQty: quantity}})        
-        // console.log('inFood: ', this.state.inFood)
     }
     
     handleInList = (e) => {
         let checked = e.target.checked;
         this.setState((state) => {return{...state, inList: checked, inListQty: quantity}})        
-        // console.log('inList: ', this.state.inList)
     }
 
     render() {
@@ -80,8 +74,6 @@ class NewItemPage extends Component {
                             <option value='Meats & Seafood'>Meats & Seafood</option>
                             <option value='Fruits & Vegetables'>Fruits & Vegetables</option>
                             <option value='Spices & Condiments'>Spices & Condiments</option>
-                            <option value='Dry & Packaged Food'>Dry & Packaged Food</option>
-                            <option value='Beverages'>Beverages</option>
                             <option value='Dairy'>Dairy</option>
                         </select>   
                     </div>
@@ -100,12 +92,12 @@ class NewItemPage extends Component {
                             <input className="form-control" type="number" value={quantity} onChange={this.handleQuantity} />
                         </div>
                         <div className="form-group col-3">
-                                <input className="form-check-input" type="checkbox" value={this.state.inFood} onChange={this.handleInFood} />
-                                <label className="form-check-label">My Food</label>
+                            <input className="form-check-input" type="checkbox" value={this.state.inFood} onChange={this.handleInFood} />
+                            <label className="form-check-label">My Food</label>
                         </div>
                         <div className="form-group col-3">
-                                <input className="form-check-input" type="checkbox" value={this.state.inList} onChange={this.handleInList} />
-                                <label className="form-check-label">My List</label>
+                            <input className="form-check-input" type="checkbox" value={this.state.inList} onChange={this.handleInList} />
+                            <label className="form-check-label">My List</label>
                         </div>
                     </div>
                     <div className="d-flex justify-content-between">

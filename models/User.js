@@ -1,6 +1,5 @@
 const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
-
 const SALT_ROUNDS = 6;
 
 const itemSchema = new mongoose.Schema({
@@ -10,13 +9,13 @@ const itemSchema = new mongoose.Schema({
   },
   category: {
     type: String,
-    enum: ['Meats & Seafood', 'Fruits & Vegetables', 'Spices & Condiments', 'Dry & Packaged Food', 'Beverages', 'Dairy'],
-    default: 'Dry & Packaged Food'
+    enum: ['Meats & Seafood', 'Fruits & Vegetables', 'Spices & Condiments', 'Dairy'],
+    default: 'Meats & Seafood'
   },
   storage: {
     type: String,
     enum: ['Fridge', 'Freezer', 'Pantry'],
-    default: 'Pantry'
+    default: 'Fridge'
   },
   inFoodQty: {
     type: Number,
@@ -50,13 +49,15 @@ const userSchema = new mongoose.Schema({
     timestamps: true
 });
 
+
+// USER AUTHENTICATION 
+
 userSchema.set("toJSON", {
   transform: function(doc, ret) {
     delete ret.password;
     return ret;
   }
 });
-
 userSchema.pre("save", function(next) {
   const user = this;
   if (!user.isModified("password")) return next();
@@ -66,9 +67,9 @@ userSchema.pre("save", function(next) {
     next();
   });
 });
-
 userSchema.methods.comparePassword = function(tryPassword, cb) {
   bcrypt.compare(tryPassword, this.password, cb);
 };
+
 
 module.exports = mongoose.model('User', userSchema);

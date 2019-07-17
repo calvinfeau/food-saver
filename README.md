@@ -1,68 +1,56 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Groceries Helper App
 
-## Available Scripts
+Groceries Helper assist the user to track what are his/her current food stocks. The app also provides with a groceries list interface that the user can update using different functionalities.
 
-In the project directory, you can run:
+![home page](/public/images/homepage.png)
 
-### `npm start`
+When creating an new food item, the user select the category to store the item and must select the checkbox accordingly.
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+![new item  page](public/images/newitem.png)
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+An item can also be edited by clicking on the item itself.
 
-### `npm test`
+![edit item page](public/images/edititem.png)
 
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+<br>
 
-### `npm run build`
+## My Food Page
+The food page list food items in 3 categories: freezer, fridge and pantry. 
 
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
+If an item is not on the list, the user can click the "add to list" link to do so instantly.
+![my food page](public/images/myfood-page.png)
 
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
+<br>
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## My List Page
+The food page list food items in 3 categories: freezer, fridge and pantry. 
 
-### `npm run eject`
+![my list page](public/images/mylist-page.png)
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+The user can directly increment or decrement the quantity of an item on the list by clicking on the corresponding arrow.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+The user can also select items with the checkbox and add them all to the list by clicking "add selected items"
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+If there's remaining items, the user will have the possibility to save them on the list or remove them.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+![remaining item page](public/images/remaining-items.png)
 
-## Learn More
+<br>
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## Technologies Used
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+HTML5 | CSS3 | Javascript | React.js | Node.js | Express | MongoDB | Mongoose | Jwt | Bootstrap 
 
-### Code Splitting
+<br>
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+## Getting Started
 
-### Analyzing the Bundle Size
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
+<br>
 
-### Making a Progressive Web App
+## Next Steps 
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+- Create cuztomizable categories for the food page and the list page  
+- Update the starting budget automatically when a detail with an expense has been added and completed
+- Upload photos of previous trips
+- Add a map feature to both previous and upcoming trips to draw itineraries

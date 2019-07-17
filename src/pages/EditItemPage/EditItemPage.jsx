@@ -2,8 +2,7 @@ import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
 import { getItem, editItem, deleteItem } from '../../services/api';
 
-let fromPage;
-let quantity;
+let fromPage, quantity;
 
 class EditItemPage extends Component {
     constructor(props) {
@@ -82,7 +81,7 @@ class EditItemPage extends Component {
     render() {
         return(
             <div className='container-fluid'>
-                <div className="row row-md align-items-center justify-content-center header light-txt txt-lg">New Item</div>
+                <div className="row row-md align-items-center justify-content-center header light-txt txt-lg">Edit Item</div>
                 <form className='pd-lg justify-content-center' onSubmit={this.handleSubmit}>
                     <div className="form-group">
                         <input className="form-control" type='text' placeholder='Name' value={this.state.name} onChange={this.handleName}/>
@@ -93,8 +92,6 @@ class EditItemPage extends Component {
                             <option value='Meats & Seafood'>Meats & Seafood</option>
                             <option value='Fruits & Vegetables'>Fruits & Vegetables</option>
                             <option value='Spices & Condiments'>Spices & Condiments</option>
-                            <option value='Dry & Packaged Food'>Dry & Packaged Food</option>
-                            <option value='Beverages'>Beverages</option>
                             <option value='Dairy'>Dairy</option>
                         </select>
                     </div>
